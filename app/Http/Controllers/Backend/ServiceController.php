@@ -8,176 +8,48 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 
 use App\Models\Service as Service;
-use App\Models\ServiceCategory as ServiceCategory;
-use App\TranslationSetting as TranslationSetting;
 
 class ServiceController extends Controller
 {
-    private $languages;
-    private $language;
-    private $fields;
+    // private $languages;
+    // private $language;
+    // private $fields;
 
-    public function __construct()
+    // public function __construct()
+    // {
+    //     $locales = config('app.locales');
+    //     $this->language = $locales[0];
+    //     unset($locales[0]);
+    //     $this->languages = array_flip($locales);
+    //     $this->fields = TranslationSetting::get(with(new Service)->getTable());
+
+    //     \View::share('languages', $this->languages);
+    //     \View::share('fields', $this->fields);
+    // }
+
+    public function index()
     {
-        $locales = config('app.locales');
-        $this->language = $locales[0];
-        unset($locales[0]);
-        $this->languages = array_flip($locales);
-        $this->fields = TranslationSetting::get(with(new Service)->getTable());
-
-        \View::share('languages', $this->languages);
-        \View::share('fields', $this->fields);
-    }
-
-    public function index(Request $request)
-    {
-        $query = '1=1';
-
-        $title                  = $request->input('title');
-        $status                 = intval($request->input('status', -1));
-        $featured               = intval($request->input('featured', -1));
-        $category               = intval($request->input('category_id', -1));
-        $date_range             = $request->input('date_range');
-        $page_num               = intval($request->input('page_num', \App\Define\Constant::PAGE_NUM_20));
-
-        if( $title ) $query .= " AND title like '%" . $title . "%'";
-        if($status <> -1) $query .= " AND status = {$status}";
-        if($featured <> -1) $query .= " AND featured = {$featured}";
-        if($category <> -1) {
-            $children = ServiceCategory::where('parent_id', $category)->select('id')->get();
-            $children = implode(',', array_column($children->toArray(), 'id'));
-            $category = ($children ? $category . ',' . $children : $category);
-            $query .= " AND category_id IN({$category})";
-        }
-
-        if ($date_range)
-            $date_range = explode(' - ', $date_range);
-        if (isset($date_range[0]) && isset($date_range[1]))
-            $query .= " AND created_at >= '" . date("Y-m-d 00:00:00", strtotime(str_replace('/', '-', ($date_range[0] == '' ? '1/1/2015' : $date_range[0]) ))) . "' AND updated_at <= '" . date("Y-m-d 23:59:59", strtotime(str_replace('/', '-', ($date_range[1] == '' ? date("d/m/Y") : $date_range[1]) ))) . "'";
-
-        if (!$request->user()->ability(['system', 'admin'], ['services.approve'])) {
-            $query .= " AND created_by = " . $request->user()->id;
-        }
-
-        $services = Service::whereRaw($query . ' order by position')->paginate($page_num);
-
-        $categories = [];
-        $tmp = ServiceCategory::where('parent_id', 0)->get();
-        foreach ($tmp as $category) {
-            $categories[$category->id] = $category->name;
-            $children = ServiceCategory::where('parent_id', $category->id)->get();
-            foreach ($children as $child) {
-                $categories[$child->id] = '-- ' . $child->name;
-            }
-        }
-
-        return view('backend.services.index', compact('services', 'categories'));
+        $services = Service::orderBy('position')->paginate(20);
+        return view('backend.services.index', compact('services'));
     }
 
 
-    public function create(Request $request)
+    public function create()
     {
-        $categories = [];
-        $tmp = ServiceCategory::where('parent_id', 0)->where('status', 1)->get();
-        foreach ($tmp as $category) {
-            $categories[$category->id] = $category->name;
-            $children = ServiceCategory::where('parent_id', $category->id)->where('status', 1)->get();
-            foreach ($children as $child) {
-                $categories[$child->id] = '|__ ' . $child->name;
-
-                $grandChildren = ServiceCategory::where('parent_id', $child->id)->where('status', 1)->get();
-                foreach ($grandChildren as $ch) {
-                    $categories[$ch->id] = '|____ ' . $ch->name;
-                }
-            }
-        }
-
-        return view('backend.services.create', compact('categories'));
+        return view('backend.services.create');
     }
 
     public function store(Request $request)
     {
-        $request->merge(['featured' => intval($request->featured), 'status' => intval($request->status)]);
-        $validator = Validator::make($data = $request->only('category', 'title', 'image', 'content', 'summary','status', 'icon', 'featured', 'summary_long', 'image_logo'), Service::rules());
+        $request->merge(['status' => intval($request->status)]);
+        $validator = Validator::make($data = $request->all(), Service::rules());
         $validator->setAttributeNames(trans('services'));
-        if ($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
+        if ($validator->fails())
+            return redirect()->back()->withErrors($validator)->withInput();
 
-        $data['created_by']   = \Auth::guard('admin')->user()->id;
-        $data['category_id'] = $request->input('category');
-
-        if ($request->hasFile('image')) {
-
-            $image  = $request->image;
-            $ext    = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
-            $image  = \Image::make($request->image)->resize(360, 320);
-            //resize
-            if ($image->height() > $image->width()) {
-                if ($image->height() >= 320) {
-                    $image->resize(null, 320, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
-                }
-            } else {
-                if ($image->height() >= 320) {
-                    $image->resize(null, 320, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
-                }
-                elseif ($image->width() >= 360) {
-                    $image->resize(360, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
-                }
-            }
-
-            \File::makeDirectory('assets/media/images/services/', 0775, true, true);
-            $timestamp = time();
-            $image->save('assets/media/images/services/' . str_slug($data['title']). "_" . $timestamp . '.' .  $ext);
-            $data['image'] = 'assets/media/images/services/' . str_slug($data['title']). "_" . $timestamp . '.' .  $ext;
-        }
-        if ($request->hasFile('image_logo')) {
-
-            $image_logo  = $request->image_logo;
-            $ext    = pathinfo($image_logo->getClientOriginalName(), PATHINFO_EXTENSION);
-            $image_logo  = \Image::make($request->image_logo)->resize(278, 153);
-            //resize
-            if ($image_logo->height() > $image_logo->width()) {
-                if ($image_logo->height() >= 153) {
-                    $image_logo->resize(null, 153, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
-                }
-            } else {
-                if ($image_logo->height() >= 153) {
-                    $image_logo->resize(null, 153, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
-                }
-                elseif ($image_logo->width() >= 278) {
-                    $image_logo->resize(278, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
-                }
-            }
-
-            \File::makeDirectory('assets/media/images/services/', 0775, true, true);
-            $timestamp = time();
-            $image_logo->save('assets/media/images/services/' . str_slug($data['title']). "_" . $timestamp . '.' .  $ext);
-            $data['image_logo'] = 'assets/media/images/services/' . str_slug($data['title']). "_" . $timestamp . '.' .  $ext;
-        }
         $data['position']   = 1;
         $sevice = Service::create($data);
         Service::where('id', "<>", $sevice->id)->increment('position');
-
-        if ($this->languages && $this->fields) {
-            foreach ($this->fields as $field) {
-                $sevice->translation($field, $this->language)->create(['locale' => $this->language, 'name' => $field, 'content' => $request->$field]);
-                foreach ($this->languages as $k => $v) {
-                    $content = $field . '_' .  $k;
-                    $sevice->translation($field, $k)->create(['locale' => $k, 'name' => $field, 'content' => $request->$content]);
-                }
-            }
-        }
 
         Session::flash('message', trans('system.success'));
         Session::flash('alert-class', 'success');
@@ -200,23 +72,13 @@ class ServiceController extends Controller
             return back();
         }
 
-        $categories = [];
-        $tmp = ServiceCategory::where('parent_id', 0)->whereRaw("(status=1 OR id={$services->category_id})")->get();
-        foreach ($tmp as $category) {
-            $categories[$category->id] = $category->name;
-            $children = ServiceCategory::where('parent_id', $category->id)->whereRaw("(status=1 OR id={$services->category_id})")->get();
-            foreach ($children as $child) {
-                $categories[$child->id] = '-- ' . $child->name;
-            }
-        }
-
-        return view('backend.services.edit', compact( 'services', 'categories' ) );
+        return view('backend.services.edit', compact( 'services'));
     }
 
     public function update(Request $request, $id)
     {
         $id = intval( $id );
-        $request->merge(['featured' => intval($request->featured), 'status' => intval($request->status)]);
+        $request->merge(['status' => intval($request->status)]);
 
         $services = Service::find($id);
         if (is_null($services)) {
@@ -231,10 +93,7 @@ class ServiceController extends Controller
             return back();
         }
 
-        if ($request->hasFile('image'))
-            $validator = Validator::make($data = $request->only('category', 'title', 'image', 'content', 'summary', 'status', 'icon', 'featured', 'summary_long', 'image_logo'), Service::rules($id));
-        else
-            $validator = Validator::make($data = $request->only('category', 'title', 'content', 'summary', 'status', 'icon', 'featured', 'image', 'summary_long', 'image_logo'), Service::rules($id));
+        $validator = Validator::make($data = $request->all(), Service::rules($id));
 
         $validator->setAttributeNames(trans('services'));
 
@@ -243,89 +102,7 @@ class ServiceController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $data['category_id'] = $request->input('category');
-
-        if ($request->hasFile('image')) {
-            $image  = $request->image;
-            $ext    = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
-            $image  = \Image::make($request->image)->resize(360, 320);
-            //resize
-            if ($image->height() > $image->width()) {
-                if ($image->height() >= 320) {
-                    $image->resize(null, 320, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
-                }
-            } else {
-                if ($image->height() >= 320) {
-                    $image->resize(null, 320, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
-                }
-                elseif ($image->width() >= 360) {
-                    $image->resize(360, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
-                }
-            }
-
-            \File::makeDirectory('assets/media/images/services/', 0775, true, true);
-            if (\File::exists(public_path() . '/' . $services->image)) \File::delete(public_path() . '/' . $services->image);
-            $timestamp = time();
-            $image->save('assets/media/images/services/' . str_slug($data['title']). "_" . $timestamp . '.' .  $ext);
-            $data['image'] = 'assets/media/images/services/' . str_slug($data['title']). "_" . $timestamp . '.' .  $ext;
-        }
-
-        if ($request->hasFile('image_logo')) {
-            $image_logo  = $request->image_logo;
-            $ext    = pathinfo($image_logo->getClientOriginalName(), PATHINFO_EXTENSION);
-            $image_logo  = \Image::make($request->image_logo)->resize(278, 153);
-            //resize
-            if ($image_logo->height() > $image_logo->width()) {
-                if ($image_logo->height() >= 153) {
-                    $image_logo->resize(null, 153, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
-                }
-            } else {
-                if ($image_logo->height() >= 153) {
-                    $image_logo->resize(null, 153, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
-                }
-                elseif ($image_logo->width() >= 278) {
-                    $image_logo->resize(278, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
-                }
-            }
-
-            \File::makeDirectory('assets/media/images/services/', 0775, true, true);
-            if (\File::exists(public_path() . '/' . $services->image_logo)) \File::delete(public_path() . '/' . $services->image_logo);
-            $timestamp = time();
-            $image_logo->save('assets/media/images/services/' . str_slug($data['title']). "_" . $timestamp . '.' .  $ext);
-            $data['image_logo'] = 'assets/media/images/services/' . str_slug($data['title']). "_" . $timestamp . '.' .  $ext;
-        }
-
         $services->update($data);
-        if ($this->languages && $this->fields) {
-            foreach ($this->fields as $field) {
-                $tmp = $services->translation($field, $this->language)->first();
-                if (is_null($tmp))
-                    $services->translation($field, $this->language)->create(['locale' => $this->language, 'name' => $field, 'content' => $request->$field]);
-                else
-                    $services->translation($field, $this->language)->update(['content' => $request->$field]);
-
-                foreach ($this->languages as $k => $v) {
-                    $content = $field . '_' .  $k;
-                    $tmp = $services->translation($field, $k)->first();
-                    if (is_null($tmp))
-                        $services->translation($field, $k)->create(['locale' => $k, 'name' => $field, 'content' => $request->$content]);
-                    else
-                        $services->translation($field, $k)->update(['content' => $request->$content]);
-                }
-            }
-        }
 
         Service::clearCache();
 
@@ -349,8 +126,7 @@ class ServiceController extends Controller
             Session::flash('alert-class', 'danger');
             return back();
         }
-
-        if (\File::exists(public_path() . '/' . $services->image)) \File::delete(public_path() . '/' . $services->image);
+        Service::where('position', '>', $services->position)->decrement('position');
 
         $services->delete();
         Service::clearCache();
@@ -427,20 +203,20 @@ class ServiceController extends Controller
                     }
                     Service::clearCache();
                     break;
-                case 'category':
-                    $return             = ['error' => true, 'message' => trans('system.update') . ' ' . trans('system.success')];
-                    $category_id        = intval($request->input('category_id', 0));
-                    $category           = ServiceCategory::find($category_id);
-                    if (is_null($category) || !$category->status) {
-                        $return['message'] = 'Danh mục bạn chọn không cho phép thao tác này.';
-                        return response()->json($return);
-                    }
+                // case 'category':
+                //     $return             = ['error' => true, 'message' => trans('system.update') . ' ' . trans('system.success')];
+                //     $category_id        = intval($request->input('category_id', 0));
+                //     $category           = ServiceCategory::find($category_id);
+                //     if (is_null($category) || !$category->status) {
+                //         $return['message'] = 'Danh mục bạn chọn không cho phép thao tác này.';
+                //         return response()->json($return);
+                //     }
 
-                    foreach ($ids as $id) {
-                        Service::where('id', intval($id))->update(['category_id' => $category_id]);
-                    }
-                    Service::clearCache();
-                    break;
+                //     foreach ($ids as $id) {
+                //         Service::where('id', intval($id))->update(['category_id' => $category_id]);
+                //     }
+                //     Service::clearCache();
+                //     break;
                 default:
                     $return['message']  = trans('system.no_action_selected');
                     return response()->json($return);

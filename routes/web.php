@@ -42,11 +42,18 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'], 
         Route::get('setting-caches/redis', ['role' => 'backend', 'as' => 'caches.redis', 'uses' => 'SettingsController@redis']);
         Route::get('service-categories/delete/{id}', array('as' => 'service-categories.delete', 'uses' => 'ServiceCategoryController@delete'));
         Route::resource('service-categories', 'ServiceCategoryController');
+
         Route::get('services/delete/{id}', array('as' => 'services.delete', 'uses' => 'ServiceController@delete'));
         Route::get('services/update-position/{id}/{value}', ['role' => 'backend', 'as' => 'services.update-position', 'uses' => 'ServiceController@updatePosition']);
         Route::get('services/approve/{id}', array('as' => 'services.approve', 'uses' => 'ServiceController@approve'));
         Route::post('services/ajaxUpdateBulk', array('as' => 'services.updateBulk', 'role' => 'admin.services.update', 'uses' => 'ServiceController@updateBulk'));
         Route::resource('services', 'ServiceController');
+
+        Route::get('steps/delete/{id}', array('as' => 'steps.delete', 'uses' => 'StepController@delete'));
+        Route::get('steps/update-position/{id}/{value}', ['role' => 'backend', 'as' => 'steps.update-position', 'uses' => 'StepController@updatePosition']);
+        Route::get('steps/approve/{id}', array('as' => 'steps.approve', 'uses' => 'StepController@approve'));
+        Route::post('steps/ajaxUpdateBulk', array('as' => 'steps.updateBulk', 'role' => 'admin.steps.update', 'uses' => 'StepController@updateBulk'));
+        Route::resource('steps', 'StepController');
 
         Route::get('news/approve/{id}', array('as' => 'news.approve', 'uses' => 'NewsController@approve'));
         Route::put('news/publish/{id}', array('as' => 'news.publish', 'uses' => 'NewsController@publish'));
@@ -80,26 +87,25 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'], 
         Route::resource('projects', 'ProjectsController');
         Route::get('project-categories/delete/{id}', array('as' => 'project-categories.delete', 'uses' => 'ProjectCategoriesController@delete'));
         Route::resource('project-categories', 'ProjectCategoriesController');
-        Route::resource('partners', 'PartnersController');
-        Route::get('partners/delete/{id}', array('as' => 'partners.delete', 'uses' => 'PartnersController@delete'));
+
+        Route::get('teams/update-position/{id}/{value}', ['role' => 'backend', 'as' => 'teams.update-position', 'uses' => 'TeamController@updatePosition']);
+        Route::get('teams/delete/{id}', array('as' => 'teams.delete', 'uses' => 'TeamController@delete'));
+        Route::resource('teams', 'TeamController');
     });
 });
 
-Route::group(['middleware' => 'locale'], function() {
-    Route::get('/', ['as' => 'home', 'uses' => 'Frontend\HomeController@index']);
-    Route::get('change-language/{language}', 'Frontend\HomeController@changeLanguage')->name('change-language');
-    Route::get('tin-tuc', 'Frontend\HomeController@indexNews')->name('news');
-    Route::get('tin-tuc/{slug}-{id}.html', 'Frontend\HomeController@showNews')->name('news.show')->where([ 'slug' => '[a-zA-Z0-9\-]+', 'id' => '[0-9]+' ]);
-    Route::get('tuyen-dung', 'Frontend\HomeController@indexCareer')->name('career');
-    Route::get('tuyen-dung/{slug}-{id}.html', 'Frontend\HomeController@showCareer')->name('career.show')->where([ 'slug' => '[a-zA-Z0-9\-]+', 'id' => '[0-9]+' ]);
-    Route::get('doi-tac', 'Frontend\HomeController@indexPartner')->name('partner');
-    Route::get('danh-muc-du-an/{slug}-{id}.html', 'Frontend\HomeController@indexProject')->name('project')->where([ 'slug' => '[a-zA-Z0-9\-]+', 'id' => '[0-9]+' ]);
-    Route::get('du-an/{slug}-{id}.html', 'Frontend\HomeController@showproject')->name('project-detail')->where([ 'slug' => '[a-zA-Z0-9\-]+', 'id' => '[0-9]+' ]);
-    Route::get('tim-kiem.html', [ 'as' => 'home.search', 'uses' => 'Frontend\HomeController@search']);
-	Route::get('{slug}.html', [ 'as' => 'home.static-page', 'uses' => 'Frontend\HomeController@staticPage' ])->where(['slug' => '[a-zA-Z0-9\-]+']);
-	Route::get('danh-muc-dich-vu/{slug}-{id}.html', [ 'as' => 'home.services-category', 'uses' => 'Frontend\HomeController@getServicesCategory' ])->where([ 'slug' => '[a-zA-Z0-9\-]+', 'id' => '[0-9]+' ]);
-	Route::get('dich-vu/{slug}-{id}.html', [ 'as' => 'home.services-detail', 'uses' => 'Frontend\HomeController@getDetailService' ])->where(['slug' => '[a-zA-Z0-9\-]+', 'id' => '[0-9]+']);
-    Route::get('sidebar', [ 'as' => 'home.sidebar', 'uses' => 'Frontend\HomeController@sidebar' ]);
-    Route::get('page', [ 'as' => 'home.page', 'uses' => 'Frontend\HomeController@page' ]);
-    // Route::view('/page', 'frontend.pages.blog-half-img-left-sidebar');
-});
+Route::get('/', ['as' => 'home', 'uses' => 'Frontend\HomeController@index']);
+Route::get('change-language/{language}', 'Frontend\HomeController@changeLanguage')->name('change-language');
+Route::get('tin-tuc', 'Frontend\HomeController@indexNews')->name('news');
+Route::get('tin-tuc/{slug}-{id}.html', 'Frontend\HomeController@showNews')->name('news.show')->where([ 'slug' => '[a-zA-Z0-9\-]+', 'id' => '[0-9]+' ]);
+Route::get('tuyen-dung', 'Frontend\HomeController@indexCareer')->name('career');
+Route::get('tuyen-dung/{slug}-{id}.html', 'Frontend\HomeController@showCareer')->name('career.show')->where([ 'slug' => '[a-zA-Z0-9\-]+', 'id' => '[0-9]+' ]);
+Route::get('doi-tac', 'Frontend\HomeController@indexPartner')->name('partner');
+Route::get('danh-muc-du-an/{slug}-{id}.html', 'Frontend\HomeController@indexProject')->name('project')->where([ 'slug' => '[a-zA-Z0-9\-]+', 'id' => '[0-9]+' ]);
+Route::get('du-an/{slug}-{id}.html', 'Frontend\HomeController@showproject')->name('project-detail')->where([ 'slug' => '[a-zA-Z0-9\-]+', 'id' => '[0-9]+' ]);
+Route::get('tim-kiem.html', [ 'as' => 'home.search', 'uses' => 'Frontend\HomeController@search']);
+Route::get('{slug}.html', [ 'as' => 'home.static-page', 'uses' => 'Frontend\HomeController@staticPage' ])->where(['slug' => '[a-zA-Z0-9\-]+']);
+Route::get('danh-muc-dich-vu/{slug}-{id}.html', [ 'as' => 'home.services-category', 'uses' => 'Frontend\HomeController@getServicesCategory' ])->where([ 'slug' => '[a-zA-Z0-9\-]+', 'id' => '[0-9]+' ]);
+Route::get('dich-vu/{slug}-{id}.html', [ 'as' => 'home.services-detail', 'uses' => 'Frontend\HomeController@getDetailService' ])->where(['slug' => '[a-zA-Z0-9\-]+', 'id' => '[0-9]+']);
+Route::get('sidebar', [ 'as' => 'home.sidebar', 'uses' => 'Frontend\HomeController@sidebar' ]);
+Route::get('page', [ 'as' => 'home.page', 'uses' => 'Frontend\HomeController@page' ]);

@@ -18,8 +18,6 @@ class CreateStaticPagesTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('description');
-            $table->integer('group')->nullable();
-            $table->string('type')->nullable();
             $table->integer('status');
             $table->timestamps();
         });

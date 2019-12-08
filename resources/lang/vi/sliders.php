@@ -2,8 +2,10 @@
 
 return array(
 	'label'    => 'Slider',
-	'summary'  => 'Nội dung',
+	'content'  => 'Nội dung',
+	'summary'  => 'Tóm tắt',
 	'name'     => 'Tiêu đề',
 	'position' => 'Vị trí',
 	'image' => 'Ảnh slider',
+	'sub_image' => 'Ảnh phụ',
 );

@@ -3,7 +3,7 @@
 <?php $appName = isset($staticPages['website-title']['description']) ? $staticPages['website-title']['description'] : env('APP_NAME'); ?>
 <head>
 	<!-- PAGE TITLE HERE -->
-	<title>@yield('title') | HTE.,JSC</title>
+	<title>@yield('title') | EVG</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:title" content="@yield('title')">
     <meta property="og:url" content="{!! url()->full() !!}">
@@ -22,247 +22,249 @@
     <meta name="keywords" content="@yield('seo_keywords')" />
     <meta name="description" content="@yield('seo_description')" />
     <meta name="copyright" content="BCTech, Công ty Cổ phần Giải pháp Công nghệ cao BCTech, Chuyên thiết kế website, phần mềm ứng dụng, ứng dụng Android, iOS, các giải pháp Cloud Server, Streaming, Camera, Cung cấp VPS, Hosting, 024 6688 3355" />
-    <link rel="icon" href="{{ asset('assets/frontend/images/hte-logo.png') }}" type="image/x-icon" />
+    <link rel="icon" href="{{ asset('assets/frontend/images/logo3.png') }}" type="image/x-icon" />
 
-
-
-	<!--[if lt IE 9]>
-	<script src="js/html5shiv.min.js"></script>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
 	<!-- STYLESHEETS -->
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/plugins.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/plugins/fontawesome/css/font-awesome.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/plugins/line-awesome/css/line-awesome.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/plugins/flaticon/flaticon.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/plugins/themify/themify-icons.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/style.min.css') }}">
-	<link class="skin" rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/skin/skin-2.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/templete.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/style.css') }}">
-	<link rel="stylesheet" type="" href="{{ asset('assets/frontend/plugins/revolution/revolution/fonts/revicons/revicons.woff') }}">
-	<!-- Google Font -->
-	<style>
-		@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Playfair+Display:400,400i,700,700i,900,900i|Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
-	</style>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.css') }}" type="text/css" media="screen">
+    <!-- REVOLUTION BANNER CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/fullwidth.css') }}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/settings.css') }}" media="screen" />
 
-	<!-- REVOLUTION SLIDER CSS -->
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/plugins/revolution/revolution/css/revolution.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/fix.css') }}">
-	<!-- SEARCH -->
-	{{-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/search.css') }}"> --}}
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/magnific-popup.css') }}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/font-awesome.min.css') }}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/jquery.bxslider.css') }}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/style.css') }}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/responsive.css') }}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/bootstrap-slider.min.css') }}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/pricing-table.css') }}" media="screen">
+    <style type="text/css">
+        .main-color {
+            color: #f2621f !important;
+            ;
+        }
+        
+        .logo-color {
+            color: #6d3c1d !important;
+            ;
+        }
+        
+        .heading-1 {
+            font-weight: 900;
+            ;
+        }
+        
+        .border-buttom-main-text {
+            border-bottom: 1px solid #6d3c1d !important;
+            ;
+        }
+        
+        .blue-color {
+            color: #0076f9 !important;
+            ;
+        }
+    </style>
+    <style type="text/css">
+        .listpriceDomain li {
+            list-style: none;
+            margin: 10px 15px 10px 0;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+        
+        .testimonials-box h3 span,
+        .staff-box h3 span,
+        .infographic-box h3 span {
+            display: inline-block;
+            padding: 15px;
+            background: #F2621F;
+            border-radius: 6px;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            -o-border-radius: 6px;
+            font-weight: 400;
+            position: relative;
+        }
+    </style>
+    <meta name="google-site-verification" content="fd0KpVbeyVu-dLcZSUSdRYvGa1mkSm24qYjPlGIJEoM" />
 </head>
 
-<body id="bg">
-	<div class="page-wraper">
-		<div id="loading-area" :style="spinnerStyle">
-			<div class="dot"></div>
-			<div class="dot"></div>
-			<div class="dot"></div>
-		</div>
-		{{-- <div class="hollow-dots-spinner" :style="spinnerStyle">
-			<div class="dot"></div>
-			<div class="dot"></div>
-			<div class="dot"></div>
-		</div> --}}
-		<!-- header -->
-		@include('frontend.menu')
-		<!-- header END -->
-		<!-- Content -->
-		@yield('content')
-	<!-- Content END -->
-	<!-- Footer -->
-	@include('frontend.footer')
+<body>
+	<!-- Container -->
+    <div id="container">
+        <!-- Header
+            ================================================== -->
+        <header class="clearfix">
+            <!-- Static navbar -->
+            <div class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="https://bctech.vn"><img alt="" src="image/logo3.png" width="232" height="66"></a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right col-md-2 col-lg-2 col-sm-3 col-xs-12">
+                            <li class="drop"><a class="active" href="tel:0985386150"  style="padding: 19px 5px"><h4>HOTLINE:0985386150</h4></a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right col-md-6 col-lg-6 col-sm-6 col-xs-12" style="margin: 20px 0;">
+                            <li class="drop"><a href="#" class="non-active"><h4>Địa chỉ : Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- End Header -->
+
+        @yield('content')
+        
+        <!-- footer
+            ================================================== -->
+        <footer>
+            <div class="footer-line">
+                <div class="container">
+                    <div class="footer-line-in">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>&#169; 2016 BCTech .,JSC All Rights Reserved | <i class="fa fa-home"></i> CTCP Giải pháp Công nghệ cao BCTech | <i class="fa fa-map-marker"></i> Số 36/50 - Hoàng Văn Thái - HN</p>
+                            </div>
+                            <div class="col-md-4">
+                                <ul class="social-icons">
+                                    <li>
+                                        <a class="facebook" href="https://cloud.evgcorp.net" style="color: white;">
+                                            <i class="fa fa-globe"></i>https://cloud.evgcorp.net
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="facebook" href="tel:0985386150" style="color: white;">
+                                            <i class="fa fa-phone"></i>ZALO:098 538 6150
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End footer -->
+    </div>
 	<!-- Footer END-->
-	<button class="scroltop style1 white icon-up" type="button"><i class="fa fa-arrow-up"></i></button>
-	</div>
 	<!-- JAVASCRIPT FILES ========================================= -->
-	<script src="{{ asset('assets/frontend/welcome/js/jquery.min.js') }}"></script><!-- JQUERY.MIN JS -->
-	<script src="{{ asset('assets/frontend/welcome/js/custom.js') }}"></script><!-- CUSTOM FUCTIONS  -->
-	<script src="{{ asset('assets/frontend/js/combining.js') }}"></script><!-- CONTACT JS  -->
-	<script src="{{ asset('assets/frontend/js/jquery.lazy.min.js') }}"></script>
-	<!-- REVOLUTION JS FILES -->
+	<script type="text/javascript" src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/frontend/js/jquery.migrate.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/frontend/js/jquery.magnific-popup.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/frontend/js/bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/frontend/js/jquery.bxslider.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/frontend/js/plugins-scroll.js') }}"></script>
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- jQuery KenBurn Slider  -->
+    <script type="text/javascript" src="{{ asset('assets/frontend/js/jquery.themepunch.revolution.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/frontend/js/script.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/frontend/js/bootstrap-slider.min.js') }}"></script>
+	<script type="text/javascript">
+        var tpj = jQuery;
+        tpj.noConflict();
 
-	<script src="{{ asset('assets/frontend/plugins/revolution/revolution/js/jquery.themepunch.tools.min.js') }}"></script>
-	<script src="{{ asset('assets/frontend/plugins/revolution/revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
+        tpj(document).ready(function() {
 
-	<script type="text/javascript"
-		src="{{ asset('assets/frontend/plugins/revolution/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
-	<script type="text/javascript"
-		src="{{ asset('assets/frontend/plugins/revolution/revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
-	<script type="text/javascript"
-		src="{{ asset('assets/frontend/plugins/revolution/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
-	<script type="text/javascript"
-		src="{{ asset('assets/frontend/plugins/revolution/revolution/js/extensions/revolution.extension.kenburn.min.js') }}"></script>
-	<script type="text/javascript"
-		src="{{ asset('assets/frontend/plugins/revolution/revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
-	<script type="text/javascript"
-		src="{{ asset('assets/frontend/plugins/revolution/revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
+            if (tpj.fn.cssOriginal != undefined)
+                tpj.fn.css = tpj.fn.cssOriginal;
 
-	<script src="{{ asset('assets/frontend/js/rev.slider.js') }}"></script>
-	<script src="{{ asset('assets/frontend/js/main.js') }}"></script>
-	<script>
-		jQuery(document).ready(function () {
-			'use strict';
-			dz_rev_slider_1();
-			$('.lazy').Lazy();
-		});	/*ready*/
-	</script>
-	<script>
-		$(document).ready(function () {
+            var api = tpj('.fullwidthbanner').revolution({
+                delay: 8000,
+                startwidth: 1170,
+                startheight: 500,
 
-			var sync1 = $("#sync1");
-			var sync2 = $("#sync2");
-			var slidesPerPage = 4; //globaly define number of elements per page
-			var syncedSecondary = true;
+                onHoverStop: "off", // Stop Banner Timet at Hover on Slide on/off
 
-			sync1.owlCarousel({
-				items: 1,
-				nav: true,
-				autoplaySpeed: 3000,
-				navSpeed: 3000,
-				paginationSpeed: 3000,
-				slideSpeed: 3000,
-				smartSpeed: 3000,
-				autoplay: 3000,
-				dots: false,
-				loop: true,
-				responsiveRefreshRate: 200,
-				navText: ['<i class="la la-angle-left"></i>', '<i class="la la-angle-right"></i>'],
-			}).on('changed.owl.carousel', syncPosition);
+                thumbWidth: 100, // Thumb With and Height and Amount (only if navigation Tyope set to thumb !)
+                thumbHeight: 50,
+                thumbAmount: 3,
 
-			sync2.on('initialized.owl.carousel', function () {
-				sync2.find(".owl-item").eq(0).addClass("current");
-			}).owlCarousel({
-				items: slidesPerPage,
-				dots: false,
-				nav: false,
-				margin: 20,
-				autoplaySpeed: 3000,
-				navSpeed: 3000,
-				paginationSpeed: 3000,
-				slideSpeed: 3000,
-				smartSpeed: 3000,
-				autoplay: 3000,
-				slideBy: slidesPerPage, //alternatively you can slide by 1, this way the active slide will stick to the first item in the second carousel
-				responsiveRefreshRate: 100,
-				responsive: {
-					0: {
-						items: 2
-					},
-					480: {
-						items: 2
-					},
-					768: {
-						items: 3
-					},
-					1024: {
-						items: 4
-					},
-					1400: {
-						items: 4
-					}
-				}
-			}).on('changed.owl.carousel', syncPosition2);
+                hideThumbs: 0,
+                navigationType: "none", // bullet, thumb, none
+                navigationArrows: "solo", // nexttobullets, solo (old name verticalcentered), none
 
-			function syncPosition(el) {
-				//if you set loop to false, you have to restore this next line
-				//var current = el.item.index;
+                navigationStyle: "round", // round,square,navbar,round-old,square-old,navbar-old, or any from the list in the docu (choose between 50+ different item), custom
 
-				//if you disable loop you have to comment this block
-				var count = el.item.count - 1;
-				var current = Math.round(el.item.index - (el.item.count / 2) - .5);
+                navigationHAlign: "center", // Vertical Align top,center,bottom
+                navigationVAlign: "bottom", // Horizontal Align left,center,right
+                navigationHOffset: 30,
+                navigationVOffset: 40,
 
-				if (current < 0) {
-					current = count;
-				}
-				if (current > count) {
-					current = 0;
-				}
+                soloArrowLeftHalign: "left",
+                soloArrowLeftValign: "center",
+                soloArrowLeftHOffset: 0,
+                soloArrowLeftVOffset: 0,
 
-				//end block
+                soloArrowRightHalign: "right",
+                soloArrowRightValign: "center",
+                soloArrowRightHOffset: 0,
+                soloArrowRightVOffset: 0,
 
-				sync2
-					.find(".owl-item")
-					.removeClass("current")
-					.eq(current)
-					.addClass("current");
-				var onscreen = sync2.find('.owl-item.active').length - 1;
-				var start = sync2.find('.owl-item.active').first().index();
-				var end = sync2.find('.owl-item.active').last().index();
+                touchenabled: "on", // Enable Swipe Function : on/off
 
-				if (current > end) {
-					sync2.data('owl.carousel').to(current, 100, true);
-				}
-				if (current < start) {
-					sync2.data('owl.carousel').to(current - onscreen, 100, true);
-				}
-			}
+                stopAtSlide: -1, // Stop Timer if Slide "x" has been Reached. If stopAfterLoops set to 0, then it stops already in the first Loop at slide X which defined. -1 means do not stop at any slide. stopAfterLoops has no sinn in this case.
+                stopAfterLoops: -1, // Stop Timer if All slides has been played "x" times. IT will stop at THe slide which is defined via stopAtSlide:x, if set to -1 slide never stop automatic
 
-			function syncPosition2(el) {
-				if (syncedSecondary) {
-					var number = el.item.index;
-					sync1.data('owl.carousel').to(number, 100, true);
-				}
-			}
+                hideCaptionAtLimit: 0, // It Defines if a caption should be shown under a Screen Resolution ( Basod on The Width of Browser)
+                hideAllCaptionAtLilmit: 0, // Hide all The Captions if Width of Browser is less then this value
+                hideSliderAtLimit: 0, // Hide the whole slider, and stop also functions if Width of Browser is less than this value
 
-			sync2.on("click", ".owl-item", function (e) {
-				e.preventDefault();
-				var number = $(this).index();
-				//sync1.data('owl.carousel').to(number, 300, true);
+                fullWidth: "on",
 
-				sync1.data('owl.carousel').to(number, 300, true);
-
-			});
-		});
-	</script>
-	<script>
-		// // Get the container element
-		// var btnContainer = document.getElementById("navbarNavDropdown");
-
-		// // Get all buttons with class="btn" inside the container
-		// var btns = btnContainer.getElementsByClassName("menu-hover");
-
-		// // Loop through the buttons and add the active class to the current/clicked button
-		// for (var i = 0; i < btns.length; i++) {
-		//   btns[i].addEventListener("mouseover", function() {
-		//     var current = document.getElementsByClassName("active");
-		//     current[0].className = current[0].className.replace(" active", "");
-		//     this.className += " active";
-		//   });
-		// }
-
-		// jQuery(document).ready(function( $ ){
-	 //        var retrievedClassName = localStorage.getItem('activeClass');
-	 //        if(retrievedClassName == "active"){
-	 //          // console.log($(this));
-	 //        }
-	 //        $(".menu-hover").bind('mouseover', function () {
-	 //          $(".menu-hover").removeClass("active");
-	 //          $(this).addClass("active");
-	 //          localStorage.setItem('activeClass', "active");
-	 //        });
-	 //    });
-		$(document).ready(function () {
-
-            $(".menu-hover").click(function () {
-                var id = $(this);
-
-                $(".menu-hover").removeClass("active");
-                $(id).addClass("active");
-                sessionStorage.setItem("selectedolditem", $(id).text());
+                shadow: 1 //0 = no Shadow, 1,2,3 = 3 Different Art of Shadows -  (No Shadow in Fullwidth Version !)
 
             });
 
-            var selectedolditem = sessionStorage.getItem('selectedolditem');
+            // TO HIDE THE ARROWS SEPERATLY FROM THE BULLETS, SOME TRICK HERE:
+            // YOU CAN REMOVE IT FROM HERE TILL THE END OF THIS SECTION IF YOU DONT NEED THIS !
+            api.bind("revolution.slide.onloaded", function(e) {
 
-            if (selectedolditem !== null && $(".menu-hover:contains('" + selectedolditem + "')").length) {
-            	$(".menu-hover").removeClass("active");
-                $(".menu-hover:contains('" + selectedolditem + "')").addClass("active");
-            }
+                jQuery('.tparrows').each(function() {
+                    var arrows = jQuery(this);
+
+                    var timer = setInterval(function() {
+
+                        if (arrows.css('opacity') == 1 && !jQuery('.tp-simpleresponsive').hasClass("mouseisover"))
+                            arrows.fadeOut(300);
+                    }, 3000);
+                })
+
+                jQuery('.tp-simpleresponsive, .tparrows').hover(function() {
+                    jQuery('.tp-simpleresponsive').addClass("mouseisover");
+                    jQuery('body').find('.tparrows').each(function() {
+                        jQuery(this).fadeIn(300);
+                    });
+                }, function() {
+                    if (!jQuery(this).hasClass("tparrows"))
+                        jQuery('.tp-simpleresponsive').removeClass("mouseisover");
+                })
+            });
+            // END OF THE SECTION, HIDE MY ARROWS SEPERATLY FROM THE BULLETS
         });
-	</script>
+    </script>
+    <script>
+        jQuery(function() {
+            jQuery("#txtDomain").keypress(function(e) {
+                if (e.which == 13) {
+                    window.open("http://domain.bctech.vn/customer/cart/result/" + jQuery(this).val(), '_blank');
+                }
+            });
+        });
+
+        function check_domain() {
+            window.open("http://domain.bctech.vn/customer/cart/result/" + jQuery("#txtDomain").val(), '_blank');
+        }
+    </script>
 </body>
 
 </html>

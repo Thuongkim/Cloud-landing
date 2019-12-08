@@ -1,0 +1,1057 @@
+/*
+Theme Name: Pricing Table Framework
+Author: Ark Logics
+Author URI: https://themeforest.net/user/arklogics
+Version: 1
+Description: Base theme for HTML5
+Text Domain: base
+Tags: one-column, two-columns, three-columns
+Theme URI: http://markhorthemes.com/html/demo/table
+*/
+/*------------------------------------------------------------------
+
+1. Price Btn / .price-btn
+2. Price List / .price-list
+3. Price List2 / .price-list2
+4. Price List3 / .price-list3
+5. Price List4 / .price-list4
+6. Price List5 / .price-list5
+7. Price List6 / .price-list6
+8. Responsive Layout / Responsive layout
+
+-------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------
+1. Price Btn / .price-btn
+-------------------------------------------------------------------*/
+.price-btn {
+  font-size: 19px;
+  line-height: 21px;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 18px 35px 15px;
+  background: #F2621F;
+  transition: all 0.25s linear;
+}
+
+.price-btn .fa {
+  font-size: 21px;
+  line-height: 23px;
+  margin: 0 15px 0 0;
+}
+
+.price-btn:hover {
+  background: #6D3C1D;
+  color: #fff;
+}
+
+/*------------------------------------------------------------------
+2. Price List / .price-list
+-------------------------------------------------------------------*/
+.price-list {
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: 500;
+  overflow: hidden;
+  margin: 0;
+  padding: 0 0 25px;
+  background: #f7f8fa;
+  transition: all 0.25s linear;
+}
+
+.price-list.active, .price-list:hover {
+  color: #fff;
+  background: #F2621F;
+}
+
+.price-list.active .heading, .price-list:hover .heading {
+  border-bottom-color: #fff;
+}
+
+.price-list.active .price, .price-list:hover .price {
+  color: #fff;
+}
+
+.price-list.active .price:before, .price-list:hover .price:before {
+  background: #fff;
+}
+
+.price-list.active .price .txt2, .price-list:hover .price .txt2 {
+  color: #fff;
+}
+
+.price-list.active .price-btn, .price-list:hover .price-btn {
+  color: #F2621F;
+  background: #fff;
+}
+
+.price-list.active .price-btn:hover, .price-list:hover .price-btn:hover {
+  color: #fff;
+  background: #1c1c1c;
+}
+
+.price-list.price2 .heading {
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.price-list.price2 .btns {
+  padding: 30px 0 0;
+}
+
+.price-list.price2 .price-btn {
+  font-size: 14px;
+  line-height: 16px;
+  padding: 12px 24px 11px;
+}
+
+.price-list.price2 .price-btn .fa {
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.price-list li {
+  margin: 0 0 18px;
+  overflow: hidden;
+  transition: all 0.25s linear;
+}
+
+.price-list .heading {
+  font-size: 21px;
+  line-height: 23px;
+  color: #fff;
+  padding: 33px 20px 24px;
+  margin: 0;
+  border: 1px solid #F2621F;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  letter-spacing: 3px;
+  background: #F2621F;
+}
+
+.price-list .price {
+  font-size: 60px;
+  line-height: 20px;
+  font-weight: 700;
+  color: #F2621F;
+  padding: 58px 30px 17px;
+  margin: 0 0 13px;
+  position: relative;
+  transition: all 0.25s linear;
+}
+
+.price-list .price:before {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  left: 50%;
+  top: auto;
+  bottom: 0;
+  right: auto;
+  background: #2f3542;
+  width: 151px;
+  height: 1px;
+  transform: translateX(-50%);
+  z-index: 0;
+  transition: all 0.25s linear;
+}
+
+.price-list .price .txt {
+  display: block;
+}
+
+.price-list .price .txt sup {
+  font-size: 60px;
+  font-weight: 400;
+  top: 0;
+  margin: 0 -15px 0 0;
+}
+
+.price-list .price .txt b {
+  font-size: 30px;
+  top: 46px;
+  font-weight: 800;
+  position: absolute;
+}
+
+.price-list .price .txt2 {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 300;
+  font-style: italic;
+  color: #2f3542;
+  transition: all 0.25s linear;
+}
+
+.price-list .btns {
+  padding: 16px 0 0;
+}
+
+/*------------------------------------------------------------------
+3. Price List2 / .price-list2
+-------------------------------------------------------------------*/
+.price-list2 {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+  overflow: hidden;
+  margin: 0;
+  padding: 0 22px 25px;
+  background: #f7f8fa;
+  transition: all 0.25s linear;
+}
+
+.price-list2.active, .price-list2:hover {
+  color: #fff;
+  background: #F2621F;
+}
+
+.price-list2.active .heading, .price-list2:hover .heading {
+  border-bottom-color: #fff;
+}
+
+.price-list2.active .icon, .price-list2:hover .icon {
+  color: #F2621F;
+  background: #fff;
+}
+
+.price-list2.active li, .price-list2:hover li {
+  border-top-color: rgba(255, 255, 255, 0.3);
+}
+
+.price-list2.active li .fa-check, .price-list2:hover li .fa-check {
+  color: #fff;
+}
+
+.price-list2.active .price, .price-list2:hover .price {
+  color: #fff;
+}
+
+.price-list2.active .price .txt2, .price-list2:hover .price .txt2 {
+  color: #fff;
+}
+
+.price-list2.active .price-btn, .price-list2:hover .price-btn {
+  color: #F2621F;
+  background: #fff;
+}
+
+.price-list2.active .price-btn:hover, .price-list2:hover .price-btn:hover {
+  color: #fff;
+  background: #1c1c1c;
+}
+
+.price-list2.price2.active .price-btn, .price-list2.price2:hover .price-btn {
+  border: 1px solid #fff;
+  color: #fff;
+  background: none;
+}
+
+.price-list2.price2.active .price-btn:hover, .price-list2.price2:hover .price-btn:hover {
+  color: #fff;
+  border-color: #1c1c1c;
+  background: #1c1c1c;
+}
+
+.price-list2.price2 .price-btn {
+  font-size: 14px;
+  line-height: 16px;
+  color: #F2621F;
+  padding: 12px 24px 11px;
+  border: 1px solid #F2621F;
+  background: none;
+}
+
+.price-list2.price2 .price-btn .fa {
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.price-list2.price2 .price-btn:hover {
+  color: #fff;
+  border-color: #1c1c1c;
+  background: #1c1c1c;
+}
+
+.price-list2 li {
+  padding: 11px;
+  overflow: hidden;
+  border-top: 1px solid #e5e7ea;
+  transition: all 0.25s linear;
+}
+
+.price-list2 li:first-child {
+  border-top: none;
+}
+
+.price-list2 li .fa-check,
+.price-list2 li .fa-times {
+  font-size: 21px;
+  line-height: 23px;
+  margin: 0 16px 0 0;
+}
+
+.price-list2 li .fa-check {
+  color: #F2621F;
+}
+
+.price-list2 li .fa-times {
+  color: red;
+}
+
+.price-list2 .heading {
+  font-size: 30px;
+  line-height: 32px;
+  color: #fff;
+  font-weight: 800;
+  padding: 21px 20px 18px;
+  border: 1px solid #F2621F;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin: 0 -22px;
+  background: #F2621F;
+}
+
+.price-list2 .heading .txt {
+  font-size: 11px;
+  line-height: 13px;
+  font-weight: 300;
+  display: block;
+  padding: 2px 0 0;
+}
+
+.price-list2 .icon {
+  font-size: 24px;
+  line-height: 26px;
+  color: #fff;
+  width: 53px;
+  height: 53px;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  padding: 13px 10px;
+  display: block;
+  margin: 0 auto 14px;
+  transition: all 0.25s linear;
+}
+
+.price-list2 .price {
+  font-size: 60px;
+  line-height: 30px;
+  font-weight: 700;
+  padding: 46px 30px 14px;
+  margin: 0;
+  position: relative;
+  border-top: none;
+  transition: all 0.25s linear;
+}
+
+.price-list2 .price .txt {
+  display: block;
+}
+
+.price-list2 .price .txt sup {
+  font-size: 60px;
+  font-weight: 400;
+  top: 0;
+  margin: 0 -15px 0 0;
+}
+
+.price-list2 .price .txt b {
+  font-size: 30px;
+  top: 32px;
+  font-weight: 800;
+  position: absolute;
+}
+
+.price-list2 .price .txt2 {
+  font-size: 11px;
+  line-height: 13px;
+  font-weight: 300;
+  color: #2f3542;
+  transition: all 0.25s linear;
+}
+
+.price-list2 .btns {
+  padding: 33px 0 0;
+}
+
+/*------------------------------------------------------------------
+4. Price List3 / .price-list3
+-------------------------------------------------------------------*/
+.price-list3 {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+  overflow: hidden;
+  margin: 0;
+  padding: 0 12px 25px;
+  background: #f7f8fa;
+  border: 1px solid #d7d8da;
+  transition: all 0.25s linear;
+}
+
+.price-list3.active, .price-list3:hover {
+  color: #fff;
+  background: #F2621F;
+}
+
+.price-list3.active li, .price-list3:hover li {
+  border-top-color: rgba(255, 255, 255, 0.3);
+}
+
+.price-list3.active li .fa-check, .price-list3:hover li .fa-check {
+  color: #fff;
+}
+
+.price-list3.active .price, .price-list3:hover .price {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+  background: #F2621F;
+}
+
+.price-list3.active .price .txt,
+.price-list3.active .price .txt2, .price-list3:hover .price .txt,
+.price-list3:hover .price .txt2 {
+  color: #fff;
+}
+
+.price-list3.active .price-btn, .price-list3:hover .price-btn {
+  color: #F2621F;
+  background: #fff;
+}
+
+.price-list3.active .price-btn:hover, .price-list3:hover .price-btn:hover {
+  color: #fff;
+  background: #6D3C1D;
+}
+
+.price-list3.price2 .heading {
+  font-size: 24px;
+  line-height: 26px;
+}
+
+.price-list3.price2 .price-btn {
+  font-size: 14px;
+  line-height: 16px;
+  padding: 12px 15px;
+}
+
+.price-list3 li {
+  padding: 11px;
+  overflow: hidden;
+  border-top: 1px solid #e5e7ea;
+  transition: all 0.25s linear;
+}
+
+.price-list3 li:first-child {
+  border-top: none;
+}
+
+.price-list3 li .fa-check,
+.price-list3 li .fa-times {
+  font-size: 21px;
+  line-height: 23px;
+  margin: 0 16px 0 0;
+}
+
+.price-list3 li .fa-check {
+  color: #F2621F;
+}
+
+.price-list3 li .fa-times {
+  color: #6D3C1D;
+}
+
+.price-list3 .heading {
+  font-size: 30px;
+  line-height: 32px;
+  color: #fff;
+  font-weight: 800;
+  padding: 27px 27px 24px;
+  margin: 0 -22px;
+  background: #F2621F;
+}
+
+.price-list3 .heading .txt {
+  font-size: 11px;
+  line-height: 13px;
+  font-weight: 300;
+  display: block;
+  padding: 4px 0 0;
+}
+
+.price-list3 .icon {
+  font-size: 29px;
+  line-height: 31px;
+  width: 53px;
+  height: 53px;
+  color: #F2621F;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  padding: 9px 19px;
+  float: left;
+  background: #fff;
+  transition: all 0.25s linear;
+}
+
+.price-list3 .align-left {
+  float: left;
+  padding: 0 0 0 25px;
+}
+
+.price-list3 .border {
+  border: none;
+}
+
+.price-list3 .price {
+  font-size: 36px;
+  line-height: 38px;
+  font-weight: 700;
+  padding: 18px 23px 21px;
+  margin: 0 -22px 16px;
+  position: relative;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-color: #f0f2f7;
+  transition: all 0.25s linear;
+}
+
+.price-list3 .price .txt {
+  color: #F2621F;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.price-list3 .price .txt sup {
+  font-size: 24px;
+  font-weight: 400;
+  top: 0;
+  margin: 0 -8px 0 0;
+}
+
+.price-list3 .price .txt2 {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 300;
+  color: #8f95a1;
+  margin: 0 0 2px -6px;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.price-list3 .btns {
+  padding: 33px 0 0;
+}
+
+/*------------------------------------------------------------------
+5. Price List4 / .price-list4
+-------------------------------------------------------------------*/
+.price-list4 {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+  margin: 0;
+  padding: 1px 22px 25px;
+  background: #f7f8fa;
+  transition: all 0.25s linear;
+}
+
+.price-list4.active, .price-list4:hover {
+  color: #fff;
+  background: #F2621F;
+}
+
+.price-list4.active .heading, .price-list4:hover .heading {
+  color: #fff;
+}
+
+.price-list4.active .heading .txt, .price-list4:hover .heading .txt {
+  color: #fff;
+}
+
+.price-list4.active li, .price-list4:hover li {
+  border-top-color: rgba(255, 255, 255, 0.3);
+}
+
+.price-list4.active .price, .price-list4:hover .price {
+  border: 10px solid #F2621F;
+  background: #fff;
+  padding: 48px 13px 22px;
+}
+
+.price-list4.active .price .txt,
+.price-list4.active .price .txt2, .price-list4:hover .price .txt,
+.price-list4:hover .price .txt2 {
+  color: #F2621F;
+}
+
+.price-list4.active .price-btn, .price-list4:hover .price-btn {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #fff;
+  color: #fff;
+}
+
+.price-list4.active .price-btn:hover, .price-list4:hover .price-btn:hover {
+  color: #fff;
+  background: #1c1c1c;
+}
+
+.price-list4.price2.active .price, .price-list4.price2:hover .price {
+  border-width: 10px;
+  border-style: solid;
+  background: #fff;
+  padding: 38px 13px 22px;
+}
+
+.price-list4.price2.active .price-btn, .price-list4.price2:hover .price-btn {
+  color: #F2621F;
+  background: #fff;
+}
+
+.price-list4.price2.active .price-btn:hover, .price-list4.price2:hover .price-btn:hover {
+  background: #1c1c1c;
+  color: #fff;
+}
+
+.price-list4.price2 .heading {
+  font-size: 24px;
+  line-height: 26px;
+  padding: 27px 27px 29px;
+}
+
+.price-list4.price2 .price {
+  font-size: 32px;
+  line-height: 23px;
+  width: 130px;
+  height: 130px;
+  padding: 47px 23px 22px;
+  margin: -61px auto 5px;
+}
+
+.price-list4.price2 .price .txt sup {
+  margin: 0 -8px 0 0;
+}
+
+.price-list4.price2 .price .txt2 {
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.price-list4.price2 li {
+  padding: 15px;
+}
+
+.price-list4.price2 .btns {
+  padding: 33px 0 0;
+}
+
+.price-list4.price2 .price-btn {
+  font-size: 14px;
+  line-height: 16px;
+  padding: 12px 24px 11px;
+}
+
+.price-list4.price2 .price-btn:hover {
+  color: #fff;
+}
+
+.price-list4 li {
+  padding: 14px;
+  overflow: hidden;
+  border-top: 1px solid #e5e7ea;
+  transition: all 0.25s linear;
+}
+
+.price-list4 li:first-child {
+  border-top: none;
+}
+
+.price-list4 li .fa-check {
+  font-size: 21px;
+  line-height: 23px;
+  margin: 0 16px 0 0;
+}
+
+.price-list4 .heading {
+  font-size: 30px;
+  line-height: 32px;
+  color: #F2621F;
+  font-weight: 800;
+  padding: 27px 27px 29px;
+  margin: 0 -22px;
+  transition: all 0.25s linear;
+}
+
+.price-list4 .heading .txt {
+  font-size: 11px;
+  line-height: 13px;
+  font-weight: 300;
+  color: #2f3542;
+  display: block;
+  padding: 4px 0 0;
+  font-style: italic;
+  transition: all 0.25s linear;
+}
+
+.price-list4 .border {
+  border: none;
+}
+
+.price-list4 .price {
+  font-size: 44px;
+  line-height: 31px;
+  font-weight: 700;
+  color: #fff;
+  padding: 56px 23px 22px;
+  width: 159px;
+  height: 159px;
+  border-radius: 100%;
+  margin: -78px auto 15px;
+  position: relative;
+  background: #F2621F;
+  transition: all 0.25s linear;
+}
+
+.price-list4 .price .txt {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.price-list4 .price .txt sup {
+  font-size: 24px;
+  font-weight: 400;
+  top: 0;
+  margin: 0 -13px 0 0;
+}
+
+.price-list4 .price .txt2 {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 300;
+  margin: 0 0 2px -6px;
+  display: inline-block;
+  vertical-align: bottom;
+  transition: all 0.25s linear;
+}
+
+.price-list4 .btns {
+  padding: 33px 0 0;
+}
+
+.price-list4 .price-btn {
+  color: #F2621F;
+  border: 1px solid #F2621F;
+  background: none;
+}
+
+.price-list4 .price-btn:hover {
+  color: #fff;
+  border-color: #1c1c1c;
+  background: #1c1c1c;
+}
+
+/*------------------------------------------------------------------
+6. Price List5 / .price-list5
+-------------------------------------------------------------------*/
+.price-list5 {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0 0 30px;
+  border: 1px solid #e5e7ea;
+  background: #f7f8fa;
+  transition: all 0.25s linear;
+}
+
+.price-list5.active, .price-list5:hover {
+  position: relative;
+}
+
+.price-list5.active:before, .price-list5:hover:before {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  left: 0;
+  top: 0;
+  bottom: auto;
+  right: auto;
+  border-style: solid;
+  border-width: 48px 48px 0 0;
+  border-color: #F2621F transparent transparent;
+  z-index: 2;
+  width: 0;
+  height: 0;
+}
+
+.price-list5.active:after, .price-list5:hover:after {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  left: auto;
+  top: 0;
+  bottom: auto;
+  right: 0;
+  border-style: solid;
+  border-width: 0 48px 48px 0;
+  border-color: transparent #F2621F transparent transparent;
+  z-index: 0;
+  width: 0;
+  height: 0;
+}
+
+.price-list5.price2 .price-btn {
+  font-size: 14px;
+  line-height: 16px;
+  padding: 12px 15px;
+}
+
+.price-list5 li {
+  padding: 14px;
+  overflow: hidden;
+  border-top: 1px solid #e5e7ea;
+  transition: all 0.25s linear;
+}
+
+.price-list5 li:first-child {
+  border-top: none;
+}
+
+.price-list5 .border {
+  border: none;
+}
+
+.price-list5 .price {
+  background: #1c1c1c;
+  padding: 44px 0 40px;
+  position: relative;
+  margin: 0 0 25px;
+  transition: all 0.25s linear;
+}
+
+.price-list5 .price .title {
+  font-size: 25px;
+  line-height: 42px;
+  color: #F2621F;
+  font-weight: 700;
+  display: block;
+  margin: 0 0 8px;
+}
+
+.price-list5 .price .txt {
+  font-size: 60px;
+  line-height: 60px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 25px;
+  display: block;
+}
+
+.price-list5 .price .txt sup {
+  font-size: 30px;
+  top: -20px;
+  margin: 0 -9px 0 0;
+}
+
+.price-list5 .price .txt2 {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 700;
+  margin: 0 0 10px;
+  color: #fff;
+  transition: all 0.25s linear;
+}
+
+.price-list5 .btns {
+  padding: 33px 0 0;
+}
+
+/*------------------------------------------------------------------
+7. Price List6 / .price-list6
+-------------------------------------------------------------------*/
+.price-list6 {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0 0 30px;
+  background: #f7f8fa;
+  transition: all 0.25s linear;
+}
+
+.price-list6.active .price-heading, .price-list6:hover .price-heading {
+  background: #F2621F;
+}
+
+.price-list6.price2 .price-heading {
+  padding: 20px 16px 25px;
+  margin: 0 0 20px;
+}
+
+.price-list6.price2 li {
+  padding: 0 0 0 20px;
+}
+
+.price-list6.price2 .price-btn {
+  padding: 12px 21px 15px;
+}
+
+.price-list6.price2 .btns {
+  padding: 33px 0 0;
+}
+
+.price-list6 li {
+  padding: 0 0 0 39px;
+  overflow: hidden;
+  margin: 0 0 16px;
+  transition: all 0.25s linear;
+}
+
+.price-list6 li .fa {
+  font-size: 20px;
+  float: left;
+  margin: 0 20px 0 0;
+}
+
+.price-list6 li .fa-check {
+  color: #F2621F;
+}
+
+.price-list6 li .fa-times {
+  color: red;
+}
+
+.price-list6 .price-heading {
+  color: #fff;
+  margin: 0 0 41px;
+  overflow: hidden;
+  padding: 31px 36px 39px 40px;
+  background: #1c1c1c;
+}
+
+.price-list6 .price-heading .align-left {
+  float: left;
+  padding: 9px 0 0;
+}
+
+.price-list6 .price-heading .align-right {
+  float: right;
+}
+
+.price-list6 .price-heading strong {
+  font-size: 25px;
+  line-height: 27px;
+  color: #fff;
+  display: block;
+  font-weight: 700;
+  margin: 0 0 3px;
+}
+
+.price-list6 .price-heading .price {
+  font-size: 40px;
+  line-height: 42px;
+  margin: 0 0 -3px;
+}
+
+.price-list6 .price-heading .price sup {
+  font-size: 20px;
+}
+
+.price-list6 .btns {
+  padding: 33px 0 0;
+}
+
+/*------------------------------------------------------------------
+8. Responsive Layout / Responsive layout
+-------------------------------------------------------------------*/
+@media (max-width: 1199px) {
+  .price-list2.price2 .price {
+    font-size: 48px;
+  }
+  .price-list2.price2 .price .txt sup {
+    font-size: 40px;
+  }
+  .price-list3.price2 .heading {
+    font-size: 20px;
+    line-height: 24px;
+    padding: 27px 17px 24px;
+  }
+  .price-list3.price2 li {
+    padding: 11px 0;
+  }
+  .price-list3.price2 .price {
+    padding: 11px;
+  }
+  .price-list6 {
+    font-size: 12px;
+  }
+  .price-list6 .price-heading strong {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .price-list.price2,
+  .price-list2.price2,
+  .price-list3.price2,
+  .price-list5.price2,
+  .price-list6.price2 {
+    margin: 0 0 30px;
+  }
+  .price-list .price,
+  .price-list2 .price {
+    font-size: 50px;
+  }
+  .price-list .price .txt sup,
+  .price-list2 .price .txt sup {
+    font-size: 40px;
+    margin: 0 -8px 0 0;
+  }
+  .price-btn {
+    padding: 15px 19px;
+  }
+  .price-list3 .heading {
+    font-size: 22px;
+    line-height: 26px;
+    padding: 27px 15px 24px;
+  }
+  .price-list3 .align-left {
+    padding: 0 0 0 15px;
+  }
+  .price-list4.price2 {
+    margin: 0 0 100px;
+  }
+  .price-list6 .price-heading {
+    padding: 31px 15px 39px;
+  }
+}
+
+@media (max-width: 767px) {
+  .price-list,
+  .price-list2,
+  .price-list3,
+  .price-list5,
+  .price-list6 {
+    margin: 0 0 30px;
+  }
+  .price-list2 .price {
+    font-size: 44px;
+  }
+  .price-list2 .price .txt sup {
+    font-size: 29px;
+  }
+  .price-list2 .price .txt b {
+    font-size: 26px;
+  }
+  .price-list4 {
+    margin: 0 0 100px;
+  }
+}

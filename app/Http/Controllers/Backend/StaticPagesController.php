@@ -4,32 +4,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 
-use App\TranslationSetting as TranslationSetting;
 use App\StaticPage as StaticPage;
 
 use App\Http\Controllers\Controller;
 
 class StaticPagesController extends Controller
 {
-    private $languages;
-    private $language;
-    private $fields;
-
-    public function __construct()
-    {
-        $locales = config('app.locales');
-        $this->language = $locales[0];
-        unset($locales[0]);
-        $this->languages = array_flip($locales);
-        $this->fields = TranslationSetting::get(with(new StaticPage)->getTable());
-
-        \View::share('languages', $this->languages);
-        \View::share('fields', $this->fields);
-    }
-
 	public function index(Request $request)
 	{
-        $news = StaticPage::get();
+        $news = StaticPage::all();
 
 		return view('backend.static-pages.index', compact('news', 'categories'));
 	}
@@ -80,25 +63,6 @@ class StaticPagesController extends Controller
         }
         
         $staticPage->update($data);
-
-        if ($this->languages && $this->fields) {
-            foreach ($this->fields as $field) {
-                $tmp = $staticPage->translation($field, $this->language)->first();
-                if (is_null($tmp))
-                    $staticPage->translation($field, $this->language)->create(['locale' => $this->language, 'name' => $field, 'content' => $request->$field]);
-                else
-                    $staticPage->translation($field, $this->language)->update(['content' => $request->$field]);
-
-                foreach ($this->languages as $k => $v) {
-                    $content = $field . '_' .  $k;
-                    $tmp = $staticPage->translation($field, $k)->first();
-                    if (is_null($tmp))
-                        $staticPage->translation($field, $k)->create(['locale' => $k, 'name' => $field, 'content' => $request->$content]);
-                    else
-                        $staticPage->translation($field, $k)->update(['content' => $request->$content]);
-                }
-            }
-        }
 
         StaticPage::clearCache();
 

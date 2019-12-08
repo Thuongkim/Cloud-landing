@@ -40,20 +40,6 @@
         <td>
             {!! Form::text('name', old('name', $slider->name), array('class' => 'form-control', 'required', 'maxlength' => 50)) !!}
         </td>
-        
-        @if(isset($fields['name']))
-        @foreach($languages as $language => $value)
-
-        <th class="text-right">
-            {!! trans('sliders.name') !!} ({!! trans('system.' . $language) !!})
-        </th>
-        <td>
-            <?php $content = $slider->translation('name', $language)->first(); ?>
-            {!! Form::text("name_{$language}", old("name_{$language}", is_null($content) ? '' : $content->content), array('class' => 'form-control', 'maxlength' => 255)) !!}
-        </td>
-
-        @endforeach
-        @endif
     </tr>
     <tr>
         <th class="text-right">
@@ -62,29 +48,45 @@
         <td>
             {!! Form::text('summary', old('summary', $slider->summary), array('class' => 'form-control', 'required',  'maxlength' => 255)) !!}
         </td>
-
-        @if(isset($fields['summary']))
-        @foreach($languages as $language => $value)
-
+    </tr>
+    <tr>
         <th class="text-right">
-            {!! trans('sliders.summary') !!} ({!! trans('system.' . $language) !!})
+            {!! trans('sliders.content') !!}
         </th>
         <td>
-            <?php $content = $slider->translation('summary', $language)->first(); ?>
-            {!! Form::text("summary_{$language}", old("summary_{$language}", is_null($content) ? '' : $content->content), array('class' => 'form-control', 'maxlength' => 255)) !!}
+            {!! Form::textarea('content', old('content', $slider->content), array('class' => 'form-control', 'required', 'rows' => 10,  'maxlength' => 700)) !!}
         </td>
-
-        @endforeach
-        @endif
+    </tr>
+    <tr>
+        <th class="text-right">{!! trans("sliders.sub_image") !!}</th>
+        <td>
+            <div class="fileupload fileupload-new" data-provides="fileupload">
+                <div class="fileupload-preview thumbnail" style="min-height: 381px; max-height: 381px; max-width: 460px;padding: 0px;">
+                    <img src="{!! asset($slider->sub_image) !!}">
+                </div>
+                <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileupload-new">
+                            {!! trans('system.action.select_image') !!}
+                        </span>
+                        {!! Form::file('sub_image') !!}
+                    </span>
+                    <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">
+                        {!! trans('system.action.remove') !!}
+                    </a>
+                    (Kích thước 460x381)
+                </div>
+            </div>
+        </td>
     </tr>
     <tr>
         <th class="text-right">
             {!! trans("sliders.image") !!}<br/>
-            (1520x600)
+            (1399x787)
         </th>
         <td colspan="3">
             <div class="fileupload fileupload-new" data-provides="fileupload">
-                <div class="fileupload-preview thumbnail" style="width: {!! 1520/1.5 !!}px; min-height: {!! 600/1.5 !!}px; max-height: auto; max-width: 1520px;">
+                <div class="fileupload-preview thumbnail" style="width: {!! 1399/1.5 !!}px; min-height: {!! 787/1.5 !!}px; max-height: auto; max-width: 1399px;">
                     <img src="{!! asset($slider->image) !!}">
                 </div>
                 <div>

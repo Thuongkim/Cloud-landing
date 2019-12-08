@@ -20,6 +20,8 @@ class CreateSlidersTable extends Migration
             $table->integer('position');
             $table->integer('status');
             $table->string('image');
+            $table->text('content');
+            $table->string('sub_image');
             $table->timestamps();
         });
     }

@@ -24,69 +24,6 @@
 </section>
 <!-- Main content -->
 <section class="content overlay">
-
-    <?php $isAdmin = Request::user()->ability(['system', 'admin'], []); ?>
-
-
-    <!-- SELECT2 EXAMPLE -->
-    <div class="box box-default">
-        <div class="box-header with-border">
-            <h3 class="box-title">Tìm kiếm</h3>
-            <div class="box-tools pull-right">
-                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-            </div>
-        </div><!-- /.box-header -->
-        <div class="box-body">
-            {!! Form::open(array('url' =>route('admin.services.index') , 'role'=>'search', 'method' => 'GET')) !!}
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        {!! Form::label('title', trans('services.title')) !!}
-                        {!! Form::text('title', Request::input('title'), ['class' => 'form-control']) !!}
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        {!! Form::label('category_id', trans('services.category')) !!}
-                        {!! Form::select('category_id', [-1 => trans('system.dropdown_all')] + $categories, Request::input('category_id', -1), ["class" => "form-control"]) !!}
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        {!! Form::label('update_range', trans('system.update_range')) !!}
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            {!! Form::text('date_range', Request::input('date_range'), ['class' => 'form-control pull-right date_range']) !!}
-                        </div><!-- /.input group -->
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        {!! Form::label('status', trans('system.status.label')) !!}
-                        {!! Form::select('status', [ -1 => trans('system.dropdown_all'), 0 => trans('system.status.deactive'), 1 => trans('system.status.active') ], Request::input('status'), ['class' => 'form-control'])!!}
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        {!! Form::label('page_num', trans('system.page_num')) !!}
-                        {!! Form::select('page_num', [ 10 => '10' . trans('system.items'), 20 => '20' . trans('system.items'), 50 => '50' . trans('system.items') , 100 => '100' . trans('system.items'), 500 => '500' . trans('system.items') ], Request::input('page_num', 20), ['class' => 'form-control select2',  "style" => "width: 100%;"]) !!}
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        {!! Form::label('filter', trans('system.action.label')) !!}
-                        <button type="submit" class="btn btn-primary btn-flat">
-                            <span class="glyphicon glyphicon-search"></span>&nbsp; {!! trans('system.action.search') !!}
-                        </button>
-                    </div>
-                </div>
-            </div>
-            {!! Form::close() !!}
-        </div><!-- /.box-body -->
-    </div><!-- /.box -->
     <div class="row">
         <div class="col-md-2" style='float: left;'>
             <a href="{!! route('admin.services.create') !!}" class='btn btn-primary btn-flat'>
@@ -115,8 +52,8 @@
                         <option value="deactive"> {{ trans('system.status.deactive') }} </option>
                         <option value="delete"> {{ trans('system.action.delete_all') }} </option>
                     </select>
-                    {!! Form::select('category', $categories, old('category'), ["class" => "form-control"]) !!}
-                    <button type="button" class="btn btn-info" onclick="return save()">
+                    {{-- {!! Form::select('category', $categories, old('category'), ["class" => "form-control"]) !!}
+ --}}                    <button type="button" class="btn btn-info" onclick="return save()">
                         <span class="glyphicon glyphicon-floppy-disk"></span>&nbsp; {{ trans('system.action.save') }}
                     </button>
                 </div>
@@ -132,11 +69,7 @@
                             <th style="text-align: center; vertical-align: middle;">#</th>
                             <th style="text-align: center; vertical-align: middle;"> {!! trans('services.title') !!} </th>
                             <th style="text-align: center; vertical-align: middle;"> {!! trans('services.icon') !!} </th>
-                            <th style="text-align: center; vertical-align: middle;"> {!! trans('services.image_logo') !!} </th>
-                            <th style="text-align: center; vertical-align: middle;"> {!! trans('services.image') !!} </th>
-                            <th style="text-align: center; vertical-align: middle;"> {!! trans('services.category') !!} </th>
                             <th style="text-align: center; vertical-align: middle;"> {!! trans('services.position') !!} </th>
-                            <th style="text-align: center; vertical-align: middle;"> {!! trans('services.featured') !!} </th>
                             <th style="text-align: center; vertical-align: middle;"> {!! trans('system.status.label') !!} </th>
                             <th style="text-align: center; vertical-align: middle;"> {!! trans('system.updated_at') !!} </th>
                             <th style="text-align: center; vertical-align: middle;"> {!! trans('system.action.label') !!} </th>
@@ -156,17 +89,7 @@
                             <td style="text-align: center; vertical-align: middle;">
                                 <i class="fa {{ $item->icon }}" aria-hidden="true"></i>
                             </td>
-                            <td style="text-align: center; vertical-align: middle;">
-                                <img src="{!! asset($item->image_logo) !!}" height="50px" style="max-width: 80px;">
-                            </td>
-                            <td style="text-align: center; vertical-align: middle;">
-                                <img src="{!! asset($item->image) !!}" height="50px" style="max-width: 80px;">
-                            </td>
-
-                            <td style="text-align: center; vertical-align: middle;">
-                                <span class="label label-{!! $labels[ $item->category_id % 5 ] !!}">{!! \App\Models\ServiceCategory::find($item->category_id)->name !!}</span>
-                            </td>
-
+                            
                             <td style="text-align: center; vertical-align: middle;">
                                 @if($services->count() > 1)
                                     @if($item->position == 1)
@@ -185,14 +108,6 @@
                                             <i class="glyphicon glyphicon-circle-arrow-down"></i>
                                         </a>
                                     @endif
-                                @endif
-                            </td>
-                            
-                            <td style="text-align: center; vertical-align: middle;">
-                                @if($item->featured == 0)
-                                <span class="label label-danger"><span class='glyphicon glyphicon-remove'></span></span>
-                                @elseif($item->featured == 1)
-                                <span class="label label-success"><span class='glyphicon glyphicon-ok'></span></span>
                                 @endif
                             </td>
 
