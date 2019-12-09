@@ -14,4 +14,8 @@ use App\Models\ServiceCategory;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    public function __construct()
+    {
+        \View::share('staticPages', StaticPage::getStaticPage());
+    }
 }

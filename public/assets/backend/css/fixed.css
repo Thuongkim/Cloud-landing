@@ -127,3 +127,6 @@ h1 {
 .select2-results__option--highlighted a {
     color: white !important;
 }
+.table {
+    margin-bottom: 0px;
+}

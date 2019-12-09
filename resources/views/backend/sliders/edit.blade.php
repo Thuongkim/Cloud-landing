@@ -46,7 +46,7 @@
             {!! trans('sliders.summary') !!}
         </th>
         <td>
-            {!! Form::text('summary', old('summary', $slider->summary), array('class' => 'form-control', 'required',  'maxlength' => 255)) !!}
+            {!! Form::textarea('summary', old('summary', $slider->summary), array('class' => 'form-control ckeditor', 'required',  'maxlength' => 500)) !!}
         </td>
     </tr>
     <tr>
@@ -54,7 +54,7 @@
             {!! trans('sliders.content') !!}
         </th>
         <td>
-            {!! Form::textarea('content', old('content', $slider->content), array('class' => 'form-control', 'required', 'rows' => 10,  'maxlength' => 700)) !!}
+            {!! Form::textarea('content', old('content', $slider->content), array('class' => 'form-control ckeditor', 'required', 'rows' => 10,  'maxlength' => 700)) !!}
         </td>
     </tr>
     <tr>
@@ -133,4 +133,5 @@
         });
     }(window.jQuery);
 </script>
+@include('backend.plugins.ckeditor')
 @stop

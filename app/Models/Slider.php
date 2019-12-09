@@ -9,7 +9,7 @@ class Slider extends \Eloquent
     public static function rules($id = 0) {
         return [
             'name'    => 'required|max:50',
-            'summary' => 'required|max:255',
+            'summary' => 'required|max:500',
             'content' => 'required',
             'image'   => ($id == 0 ? 'required|' : '') . 'max:4096|mimes:jpg,jpeg,png,gif',
             'sub_image'   => ($id == 0 ? 'required|' : '') . 'max:4096|mimes:jpg,jpeg,png,gif',

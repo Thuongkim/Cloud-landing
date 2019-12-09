@@ -22,7 +22,7 @@
     <meta name="keywords" content="@yield('seo_keywords')" />
     <meta name="description" content="@yield('seo_description')" />
     <meta name="copyright" content="BCTech, Công ty Cổ phần Giải pháp Công nghệ cao BCTech, Chuyên thiết kế website, phần mềm ứng dụng, ứng dụng Android, iOS, các giải pháp Cloud Server, Streaming, Camera, Cung cấp VPS, Hosting, 024 6688 3355" />
-    <link rel="icon" href="{{ asset('assets/frontend/images/logo3.png') }}" type="image/x-icon" />
+    <link rel="icon" href="{{ asset('assets/frontend/images/evg_logo.png') }}" type="image/x-icon" />
 
 	<!-- STYLESHEETS -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -104,7 +104,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="https://bctech.vn"><img alt="" src="{{ asset('assets/frontend/images/logo3.png') }}" width="232" height="66"></a>
+                        <a class="navbar-brand" href="https://cloud.evgcorp.net"><img alt="" src="{{ asset('assets/frontend/images/logo3.png') }}" width="232" height="66"></a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right col-md-2 col-lg-2 col-sm-3 col-xs-12">

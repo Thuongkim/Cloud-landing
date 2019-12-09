@@ -39,7 +39,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'], 
         Route::get('sliders/update-position/{id}/{value}', ['role' => 'backend', 'as' => 'sliders.update-position', 'uses' => 'SlidersController@updatePosition']);
         Route::get('sliders/delete/{id}', array('as' => 'sliders.delete', 'uses' => 'SlidersController@delete'));
         Route::resource('sliders', 'SlidersController');
-        Route::get('setting-caches/redis', ['role' => 'backend', 'as' => 'caches.redis', 'uses' => 'SettingsController@redis']);
+
+        Route::get('setting-caches/redis', ['role' => 'backend', 'as' => 'caches.redis',  'uses' => function() {
+                    \Cache::flush();
+                    \Session::flash('message', "Đã xoá hết cache.");
+                    \Session::flash('alert-class', 'success');
+                    return back();
+                }]);
+
         Route::get('service-categories/delete/{id}', array('as' => 'service-categories.delete', 'uses' => 'ServiceCategoryController@delete'));
         Route::resource('service-categories', 'ServiceCategoryController');
 
