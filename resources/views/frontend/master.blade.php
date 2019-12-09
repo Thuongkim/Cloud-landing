@@ -104,15 +104,15 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="https://bctech.vn"><img alt="" src="image/logo3.png" width="232" height="66"></a>
+                        <a class="navbar-brand" href="https://bctech.vn"><img alt="" src="{{ asset('assets/frontend/images/logo3.png') }}" width="232" height="66"></a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right col-md-2 col-lg-2 col-sm-3 col-xs-12">
-                            <li class="drop"><a class="active" href="tel:0985386150"  style="padding: 19px 5px"><h4>HOTLINE:0985386150</h4></a>
+                            <li class="drop"><a class="active" href="tel:0985386150"  style="padding: 19px 5px"><h4>{!! isset($staticPages['phone']['description']) ? $staticPages['phone']['description'] : '' !!}</h4></a>
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right col-md-6 col-lg-6 col-sm-6 col-xs-12" style="margin: 20px 0;">
-                            <li class="drop"><a href="#" class="non-active"><h4>Địa chỉ : Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4></a>
+                            <li class="drop"><a href="#" class="non-active"><h4>{!! isset($staticPages['address']['description']) ? $staticPages['address']['description'] : '' !!}</h4></a>
                             </li>
                         </ul>
                     </div>
@@ -131,21 +131,10 @@
                     <div class="footer-line-in">
                         <div class="row">
                             <div class="col-md-8">
-                                <p>&#169; 2016 BCTech .,JSC All Rights Reserved | <i class="fa fa-home"></i> CTCP Giải pháp Công nghệ cao BCTech | <i class="fa fa-map-marker"></i> Số 36/50 - Hoàng Văn Thái - HN</p>
+                                {!! isset($staticPages['footer']['description']) ? $staticPages['footer']['description'] : '' !!}
                             </div>
                             <div class="col-md-4">
-                                <ul class="social-icons">
-                                    <li>
-                                        <a class="facebook" href="https://cloud.evgcorp.net" style="color: white;">
-                                            <i class="fa fa-globe"></i>https://cloud.evgcorp.net
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="facebook" href="tel:0985386150" style="color: white;">
-                                            <i class="fa fa-phone"></i>ZALO:098 538 6150
-                                        </a>
-                                    </li>
-                                </ul>
+                                {!! isset($staticPages['footer-2']['description']) ? $staticPages['footer-2']['description'] : '' !!}
                             </div>
                         </div>
                     </div>

@@ -38,15 +38,37 @@ class StaticPage extends \Eloquent
         Cache::forget('static_pages');
     }
     
+    // public static function getStaticPage()
+    // {
+    //     if (!Cache::has('static_pages')) {
+    //         $static_pages = StaticPage::where('status', 1)->get();
+    //         $static_pages = json_encode($static_pages);
+    //         if ($static_pages) Cache::forever( 'static_pages', $static_pages) ;
+    //     } else {
+    //         $static_pages = Cache::get( 'static_pages');
+    //     }
+    //     return json_decode($static_pages, 1);
+    // }
+
     public static function getStaticPage()
     {
+        $staticPages = [];
         if (!Cache::has('static_pages')) {
-            $static_pages = StaticPage::where('status', 1)->get();
-            $static_pages = json_encode($static_pages);
-            if ($static_pages) Cache::forever( 'static_pages', $static_pages) ;
+            $staticPagess = StaticPage::where('status', 1)->get();
+            $tmp = [];
+            foreach ($staticPagess as $staticPage) {
+                $trans = $staticPage->title;
+                $tmp[$staticPage->slug]['title'] = is_null($trans) ? '' : $trans;
+                $trans = $staticPage->description;
+                $tmp[$staticPage->slug]['description'] = is_null($trans) ? '' : $trans;
+                // dd($tmp);
+                $staticPages = json_encode($tmp);
+            }
+           if ($staticPages) Cache:: forever( 'static_pages', $staticPages) ; 
         } else {
-            $static_pages = Cache::get( 'static_pages');
+            $staticPages = Cache::get('static_pages');
         }
-        return json_decode($static_pages, 1);
+        // dd(json_decode($staticPages, 1));
+        return json_decode($staticPages, 1);
     }
 }
