@@ -41,53 +41,20 @@
                     {!! Form::text('title', old('title', $news->title), array('class' => 'form-control', 'required', 'maxlength' => 255)) !!}
                 </td>
             </tr>
-            @if(isset($fields['title']))
-                @foreach($languages as $language => $value)
-                    <tr>
-                        <th class="text-right">
-                            {!! trans('static_pages.title') !!} ({!! trans('system.' . $language) !!})
-                        </th>
-                        <td>
-                            <?php $content = $news->translation('title', $language)->first(); ?>
-                            {!! Form::text("title_{$language}", old("title_{$language}", is_null($content) ? '' : $content->content), array('class' => 'form-control', 'maxlength' => 255)) !!}
-                        </td>
-                    </tr>
-                @endforeach
-            @endif
             <tr>
                 <th class="text-right">
                     {!! trans('static_pages.description') !!}
                 </th>
                 <td colspan="3">
-                    @if ($news->type == 'SIMPLE')
-                        {!! Form::text('description', old('description', $news->description), array('class' => 'form-control')) !!}
-                    @elseif ($news->type == 'COMPLEX')
-                        {!! Form::textarea('description', old('description', $news->description), array('class' => 'form-control', 'rows' => 5)) !!}
-                    @else
+                    @if ($news->group == 1)
                         {!! Form::textarea('description', old('description', $news->description), array('class' => 'form-control ckeditor', 'rows' => 25, 'id' => 'description')) !!}
+                    {{-- @elseif ($news->type == 'COMPLEX')
+                        {!! Form::text('description', old('description', $news->description), array('class' => 'form-control')) !!} --}}
+                    @else
+                        {!! Form::textarea('description', old('description', $news->description), array('class' => 'form-control', 'rows' => 5)) !!}
                     @endif
                 </td>
             </tr>
-            @if(isset($fields['description']))
-                @foreach($languages as $language => $value)
-                    <tr>
-                        <th class="text-right">
-                            {!! trans('static_pages.description') !!} ({!! trans('system.' . $language) !!})
-                        </th>
-                        <td>
-                            <?php $content = $news->translation('description', $language)->first(); ?>
-                            @if ($news->type == 'SIMPLE')
-                            {!! Form::text('description_{$language}', old('description_{$language}', is_null($content) ? '' : $content->content), array('class' => 'form-control')) !!}
-                            @elseif ($news->type == 'COMPLEX')
-                            {!! Form::textarea('description_{$language}', old('description_{$language}', is_null($content) ? '' : $content->content), array('class' => 'form-control', 'rows' => 5)) !!}
-                            @else
-                            {!! Form::textarea("description_{$language}", old('description_{$language}', is_null($content) ? '' : $content->content), array('class' => 'form-control ckeditor', 'rows' => 25, 'id' => 'description_{$language}')) !!}
-                            @endif
-                            
-                        </td>
-                    </tr>
-                @endforeach
-            @endif
            <tr>
                 <td class="text-center" colspan="2">
                     {!! trans('system.status.active') !!}

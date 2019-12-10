@@ -14,7 +14,7 @@ class StaticPagesController extends Controller
 	{
         $news = StaticPage::all();
 
-		return view('backend.static-pages.index', compact('news', 'categories'));
+		return view('backend.static-pages.index', compact('news'));
 	}
 
 	public function show($id)

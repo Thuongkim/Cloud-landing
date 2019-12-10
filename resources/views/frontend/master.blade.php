@@ -104,11 +104,11 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="https://cloud.evgcorp.net"><img alt="" src="{{ asset('assets/frontend/images/logo3.png') }}" width="232" height="66"></a>
+                        <a class="navbar-brand" href="{{ route('home') }}"><img alt="" src="{{ asset('assets/frontend/images/logo3.png') }}" width="232" height="66"></a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right col-md-2 col-lg-2 col-sm-3 col-xs-12">
-                            <li class="drop"><a class="active" href="tel:0985386150"  style="padding: 19px 5px"><h4>{!! isset($staticPages['phone']['description']) ? $staticPages['phone']['description'] : '' !!}</h4></a>
+                            <li class="drop"><a class="active" href="tel:{!! isset($staticPages['phone']['description']) ? $staticPages['phone']['description'] : '' !!}"  style="padding: 19px 5px"><h4>{!! isset($staticPages['hotline']['description']) ? $staticPages['hotline']['description'] : '' !!}</h4></a>
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right col-md-6 col-lg-6 col-sm-6 col-xs-12" style="margin: 20px 0;">
@@ -134,7 +134,18 @@
                                 {!! isset($staticPages['footer']['description']) ? $staticPages['footer']['description'] : '' !!}
                             </div>
                             <div class="col-md-4">
-                                {!! isset($staticPages['footer-2']['description']) ? $staticPages['footer-2']['description'] : '' !!}
+                                <ul class="social-icons">
+                                    <li>
+                                        <a class="facebook" href="{{ route('home') }}" style="color: white;">
+                                            <i class="fa fa-globe"></i>{!! isset($staticPages['domain']['description']) ? $staticPages['domain']['description'] : '' !!}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="facebook" href="tel:{!! isset($staticPages['phone']['description']) ? $staticPages['phone']['description'] : '' !!}" style="color: white;">
+                                            <i class="fa fa-phone"></i>{!! isset($staticPages['zalo']['description']) ? $staticPages['zalo']['description'] : '' !!}
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -142,6 +153,11 @@
             </div>
         </footer>
         <!-- End footer -->
+        <div class="fixed-link-top">
+            <div class="container">
+                <a class="go-top" href="javascript:void(0)"><i class="fa fa-angle-up"></i></a>
+            </div>
+        </div>
     </div>
 	<!-- Footer END-->
 	<!-- JAVASCRIPT FILES ========================================= -->

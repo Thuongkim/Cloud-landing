@@ -13,7 +13,7 @@
     <div class="fullwidthbanner-container">
         <div class="fullwidthbanner">
             <ul>
-            	@foreach($sliders as $slider)
+            	@foreach($sliders as $k => $slider)
                 <li data-transition="3dcurtain-vertical" data-slotamount="10" data-masterspeed="300">
                     <!-- THE MAIN IMAGE IN THE DEMO SLIDE -->
                     <img alt="" src="{{ asset($slider['image']) }}">
@@ -33,10 +33,11 @@
                         <div>
                         {!! $slider['summary'] !!}
                         </div>
-                        <div id="demo" class="collapse" style="width: 100%;">
+                        <br>
+                        <div id="demo_{{ $k}}" class="collapse" style="width: 100%;">
                         {!! $slider['content']!!}
                         </div>
-                        <button type="button" class="detail" data-toggle="collapse" data-target="#demo">Chi tiết</button>
+                        <button type="button" class="detail" data-toggle="collapse" data-target="#demo_{{ $k}}">Chi tiết</button>
                     </div>
                 </li>
                 @endforeach
@@ -94,9 +95,8 @@
                        {!! isset($staticPages['image']['description']) ? $staticPages['image']['description'] : '' !!}
                     </div>
                     <div class="col-sm-6">
-                       {{--  <h4 style="color: #d29103;margin-top: 30px;">Trải nghiệm EVG-CLOULD bạn nhận ngay:</h4><br>
-                        <p><a href="https://cloud.evgcorp.net"><i class="fa fa-hand-o-right"></i> Tư vấn tối ưu dịch vụ bởi chuyên gia</a></p> --}}
-                        {!! isset($staticPages['description']['description']) ? $staticPages['description']['description'] : '' !!}
+                        <h4 style="color: #d29103;margin-top: 30px;">{!! isset($staticPages['experience']['description']) ? $staticPages['experience']['description'] : '' !!}</h4><br>
+                        <p><a href="{{ route('home') }}"><i class="fa fa-hand-o-right"></i>{!! isset($staticPages['advisory']['description']) ? $staticPages['advisory']['description'] : '' !!}</a></p>
                     </div>
                     <a href="#"><button class="read-more">Chi tiết</button></a>
                 </div>

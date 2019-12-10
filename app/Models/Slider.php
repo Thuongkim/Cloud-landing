@@ -45,6 +45,10 @@ class Slider extends \Eloquent
     {
         if (!Cache::has('sliders')) {
             $sliders = Slider::where('status', 1)->orderBy( 'position', 'desc')->get();
+            foreach ($sliders as $slider) {
+                $slider->summary = preg_replace('/(<\/?p>)/', '', $slider->summary);
+                $slider->content = preg_replace('/(<\/?p>)/', '', $slider->content);
+            }
             $sliders = json_encode($sliders) ;
             if ($sliders) Cache::forever( 'sliders', $sliders) ;
         } else {
