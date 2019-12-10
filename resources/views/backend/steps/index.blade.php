@@ -68,7 +68,7 @@
                             <th style="text-align: center; vertical-align: middle;"></th>
                             <th style="text-align: center; vertical-align: middle;">#</th>
                             <th style="text-align: center; vertical-align: middle;"> {!! trans('steps.title') !!} </th>
-                            <th style="text-align: center; vertical-align: middle;"> {!! trans('steps.icon') !!} </th>
+                            <th style="text-align: center; vertical-align: middle;"> {!! trans('steps.image') !!} </th>
                             <th style="text-align: center; vertical-align: middle;"> {!! trans('steps.position') !!} </th>
                             <th style="text-align: center; vertical-align: middle;"> {!! trans('system.status.label') !!} </th>
                             <th style="text-align: center; vertical-align: middle;"> {!! trans('system.updated_at') !!} </th>
@@ -86,8 +86,10 @@
                             <td style="text-align: justify; vertical-align: middle;">
                                 {!! \App\Helper\HString::modSubstr($item->title, 30) !!}
                             </td>
-                            <td style="text-align: center; vertical-align: middle;">
-                                <i class="fa {{ $item->icon }}" aria-hidden="true"></i>
+                           <td style="text-align: center; vertical-align: middle;">
+                                @if($item->image)
+                                <img src="{!! asset($item->image) !!}" height="50px" style="max-width: 80px;">
+                                @endif
                             </td>
                             
                             <td style="text-align: center; vertical-align: middle;">

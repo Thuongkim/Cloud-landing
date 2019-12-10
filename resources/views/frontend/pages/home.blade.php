@@ -59,7 +59,7 @@
                     <div class="col-md-4">
                         <div class="services-post">
                             <a class="services-cloud-server" href="javascript:void(0)">
-                                <i class="{!! $service['icon'] !!}"></i>
+                                <img alt="" src="{{ asset($service['image']) }}">
                             </a>
                             <div class="services-post-content">
                                 <h4>{!! $service['title'] !!}</h4>
@@ -81,7 +81,7 @@
                                 <h4>{!! $step['title'] !!}</h4>
                             </div>
                             <a class="services-cloud-server" href="javascript:void(0)">
-                                <i class="{!! $step['icon'] !!}"></i>
+                                <img alt="" src="{{ asset($step['image']) }}">
                             </a>
                             <div class="services-post-content">
                                 <p>{!! $step['content'] !!}</p>
@@ -95,8 +95,8 @@
                        {!! isset($staticPages['image']['description']) ? $staticPages['image']['description'] : '' !!}
                     </div>
                     <div class="col-sm-6">
-                        <h4 style="color: #d29103;margin-top: 30px;">{!! isset($staticPages['experience']['description']) ? $staticPages['experience']['description'] : '' !!}</h4><br>
-                        <p><a href="{{ route('home') }}"><i class="fa fa-hand-o-right"></i>{!! isset($staticPages['advisory']['description']) ? $staticPages['advisory']['description'] : '' !!}</a></p>
+                        <h2 class="exp">{!! isset($staticPages['experience']['description']) ? $staticPages['experience']['description'] : '' !!}</h2><br>
+                        <div class="red-words">{!! isset($staticPages['advisory']['description']) ? $staticPages['advisory']['description'] : '' !!}</div>
                     </div>
                     <a href="#"><button class="read-more">Chi tiết</button></a>
                 </div>

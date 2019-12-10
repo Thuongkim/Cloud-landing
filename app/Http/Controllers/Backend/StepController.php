@@ -47,6 +47,17 @@ class StepController extends Controller
         if ($validator->fails())
             return redirect()->back()->withErrors($validator)->withInput();
 
+        if ($request->hasFile('image')) {
+            $image  = $request->image;
+            $ext    = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
+            $image  = \Image::make($request->image);
+
+            \File::makeDirectory('assets/media/images/steps/', 0775, true, true);
+            $fileName = str_slug($data['title']). "-" . time() . '.' .  $ext;
+            $image->save('assets/media/images/steps/' . $fileName);
+            $data['image'] = 'assets/media/images/steps/' . $fileName;
+        }
+
         $data['position']   = 1;
         $sevice = Step::create($data);
         Step::where('id', "<>", $sevice->id)->increment('position');
@@ -102,6 +113,18 @@ class StepController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        if ($request->hasFile('image')) {
+            $image  = $request->image;
+            $ext    = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
+            $image  = \Image::make($request->image);
+
+            \File::makeDirectory('assets/media/images/steps/' .  date('dm'), 0775, true, true);
+            if(\File::exists(asset('assets/media/images/steps/' . $steps->image))) \File::delete(public_path(). '/assets/media/images/steps/' . $steps->image);
+            $timestamp = time();
+            $image->save('assets/media/images/steps/' .  date('dm') . '/' . str_slug($data['title']). "_" . $timestamp . '.' .  $ext);
+            $data['image'] = 'assets/media/images/steps/' .  date('dm') . '/' . str_slug($data['title']). "_" . $timestamp . '.' .  $ext;
+        }
+
         $steps->update($data);
 
         Step::clearCache();
@@ -127,6 +150,7 @@ class StepController extends Controller
             return back();
         }
         Step::where('position', '>', $steps->position)->decrement('position');
+        if (\File::exists(public_path() . '/' . $steps->image)) \File::delete(public_path() . '/' . $steps->image);
 
         $steps->delete();
         Step::clearCache();

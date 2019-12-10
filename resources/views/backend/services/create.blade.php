@@ -47,11 +47,24 @@
                 </td>
             </tr>
             <tr>
-                <th class="text-right">
-                    {!! trans('services.icon') !!}
-                </th>
+                <th class="text-right">{!! trans("services.image") !!}</th>
                 <td>
-                    {!! Form::text('icon', old('icon'), array('class' => 'form-control', 'required', 'maxlength' => 50)) !!}
+                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                        <div class="fileupload-preview thumbnail" style="min-height: 200px; max-height: auto; max-width: 200px;">
+                        </div>
+                        <div>
+                            <span class="btn btn-default btn-file">
+                                <span class="fileupload-new">
+                                    {!! trans('system.action.select_image') !!}
+                                </span>
+                                {!! Form::file('image') !!}
+                            </span>
+                            <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">
+                                {!! trans('system.action.remove') !!}
+                            </a>
+                            (Kích thước 200x200)
+                        </div>
+                    </div>
                 </td>
             </tr>
             <tr>

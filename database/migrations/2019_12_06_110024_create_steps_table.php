@@ -17,7 +17,7 @@ class CreateStepsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->text('content');
-            $table->string('icon');
+            $table->string('image');
             $table->integer('position');
             $table->integer('status');
             $table->timestamps();

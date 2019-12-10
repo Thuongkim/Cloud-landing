@@ -295,7 +295,7 @@ h2 {
 
 h3 {
     color: #000000;
-    font-size: 22px;
+    font-size: 29px;
     line-height: 22px;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -449,9 +449,9 @@ body {
 .services-post > a {
     position: relative;
     display: inline-block;
-    width: 80px;
+    width: 108px;
     height: 48px;
-    background: #d29103;
+    /*background: #d29103;*/
     margin-bottom: 36px;
     margin-top: 20px;
     transition: all 0.17s ease-in-out;
@@ -468,9 +468,9 @@ body {
     left: 0;
     width: 0;
     height: 0;
-    border-left: 40px solid transparent;
+    /*border-left: 40px solid transparent;
     border-right: 40px solid transparent;
-    border-bottom: 20px solid #d29103;
+    border-bottom: 20px solid #d29103;*/
 }
 
 .services-post > a:after {
@@ -480,9 +480,9 @@ body {
     left: 0;
     width: 0;
     height: 0;
-    border-left: 40px solid transparent;
+    /*border-left: 40px solid transparent;
     border-right: 40px solid transparent;
-    border-top: 20px solid #d29103;
+    border-top: 20px solid #d29103;*/
 }
 
 .services-post > a i {
@@ -2299,7 +2299,7 @@ ul.contact-information-list li i {
 }
 
 #contact-form input[type="submit"],
-.comment-form input[type="submit"], .read_more {
+.comment-form input[type="submit"] {
     float: right;
     color: #fdfdfd;
     font-size: 13px;
@@ -2330,7 +2330,7 @@ ul.contact-information-list li i {
     -webkit-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
     border-radius: 30px;
-    margin-top: 160px;
+    /*margin: 160px 30px 0 0;*/
 }
 
 #contact-form input[type="submit"]:hover,
@@ -3304,4 +3304,15 @@ ul.social-icons li a:hover {
 
 .img-circle {
     border: #d29103 solid 4px;
+}
+
+.red-words {
+    color: rgb(236, 22, 22);
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.exp {
+    color: #d29103;
 }

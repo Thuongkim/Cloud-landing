@@ -47,6 +47,17 @@ class ServiceController extends Controller
         if ($validator->fails())
             return redirect()->back()->withErrors($validator)->withInput();
 
+        if ($request->hasFile('image')) {
+            $image  = $request->image;
+            $ext    = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
+            $image  = \Image::make($request->image);
+
+            \File::makeDirectory('assets/media/images/services/', 0775, true, true);
+            $fileName = str_slug($data['title']). "-" . time() . '.' .  $ext;
+            $image->save('assets/media/images/services/' . $fileName);
+            $data['image'] = 'assets/media/images/services/' . $fileName;
+        }
+
         $data['position']   = 1;
         $sevice = Service::create($data);
         Service::where('id', "<>", $sevice->id)->increment('position');
@@ -102,6 +113,19 @@ class ServiceController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        if ($request->hasFile('image')) {
+            $image  = $request->image;
+            $ext    = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
+            $image  = \Image::make($request->image);
+
+            \File::makeDirectory('assets/media/images/services/' .  date('dm'), 0775, true, true);
+            if(\File::exists(asset('assets/media/images/services/' . $services->image))) \File::delete(public_path(). '/assets/media/images/services/' . $services->image);
+            $timestamp = time();
+            $image->save('assets/media/images/services/' .  date('dm') . '/' . str_slug($data['title']). "_" . $timestamp . '.' .  $ext);
+            $data['image'] = 'assets/media/images/services/' .  date('dm') . '/' . str_slug($data['title']). "_" . $timestamp . '.' .  $ext;
+        }
+
+
         $services->update($data);
 
         Service::clearCache();
@@ -127,6 +151,7 @@ class ServiceController extends Controller
             return back();
         }
         Service::where('position', '>', $services->position)->decrement('position');
+        if (\File::exists(public_path() . '/' . $services->image)) \File::delete(public_path() . '/' . $services->image);
 
         $services->delete();
         Service::clearCache();
