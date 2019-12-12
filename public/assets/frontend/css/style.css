@@ -124,13 +124,13 @@ header.active .navbar-default .navbar-nav {
 .navbar-default .navbar-nav > li > a.active,
 .navbar-default .navbar-nav > li > a:hover {
     color: #fff;
-    background: #d29103;
+    background: #e55725;
 }
 
 .navbar-default .navbar-nav > li > a.non-active,
 .navbar-default .navbar-nav > li > a:hover {
     color: #fff;
-    background: #e1e3e6;
+    background: #d29103;
 }
 
 ul.drop-down {
@@ -296,7 +296,7 @@ h2 {
 h3 {
     color: #000000;
     font-size: 29px;
-    line-height: 22px;
+    line-height: 30px;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
@@ -435,10 +435,17 @@ body {
     text-align: center;
 }
 
-.services-box, .person-box {
+.services-box {
     position: relative;
     padding: 40px 0 0;
-    border-bottom: 1px solid #e8e8e8;
+    /*border-bottom: 1px solid #e8e8e8;*/
+    text-align: center;
+}
+
+.person-box {
+    margin-top: 20px;
+    position: relative;
+    padding: 40px 0 0;
     text-align: center;
 }
 
@@ -3300,6 +3307,7 @@ ul.social-icons li a:hover {
     color: #d29103;
     text-transform: uppercase;
     font-weight: 900;
+    text-align: center;
 }
 
 .img-circle {
@@ -3315,4 +3323,66 @@ ul.social-icons li a:hover {
 
 .exp {
     color: #d29103;
+}
+
+.top-words {
+    color: white;
+}
+
+.top-words:hover {
+    color: black;
+}
+
+.border-table {
+    border: 0;
+    border-bottom: 1px solid black;
+    border-style: dashed;
+}
+
+.table-post-content {
+    padding-top: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding-bottom: 15px;
+}
+
+.table-box {
+    position: relative;
+    padding: 40px 0 0;
+    border-bottom: 1px solid #e8e8e8;
+    text-align: left;
+}
+
+.table-button {
+    color: #fdfdfd;
+    font-family: 'Roboto', sans-serif;
+    padding: 0px 25%;
+    background: black;
+    text-transform: uppercase;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    border-radius: 30px;
+    float: right;
+}
+.exp-box-title {
+    color: #e55725;
+    text-transform: uppercase;
+    font-weight: 550;
+    text-align: center;
+}
+
+.exp-box {
+    margin: 30px 0 10px 0;
+    background-color: #312f30;
+}
+
+.exp-line-in {
+    padding: 20px 0 10px 0;
+}
+
+.exp-icon {
+    padding: 0;
 }

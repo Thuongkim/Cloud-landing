@@ -107,14 +107,17 @@
                         <a class="navbar-brand" href="{{ route('home') }}"><img alt="" src="{{ asset('assets/frontend/images/logo3.png') }}" width="232" height="66"></a>
                     </div>
                     <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav navbar-right col-md-2 col-lg-2 col-sm-3 col-xs-12">
-                            <li class="drop"><a class="active" href="tel:{!! isset($staticPages['phone']['description']) ? $staticPages['phone']['description'] : '' !!}"  style="padding: 19px 5px"><h4>{!! isset($staticPages['hotline']['description']) ? $staticPages['hotline']['description'] : '' !!}</h4></a>
+                        <ul class="nav navbar-nav navbar-right col-md-4 col-lg-4 col-sm-6">
+                            <li class="drop">
+                                <a class="active" href="tel:{!! isset($staticPages['phone']['description']) ? $staticPages['phone']['description'] : '' !!}"  style="padding: 19px 5px">
+                                    <h4 class="top-words">{!! isset($staticPages['hotline']['description']) ? $staticPages['hotline']['description'] : '' !!}</h4>
+                                </a>
                             </li>
                         </ul>
-                        <ul class="nav navbar-nav navbar-right col-md-6 col-lg-6 col-sm-6 col-xs-12" style="margin: 20px 0;">
+                        {{-- <ul class="nav navbar-nav navbar-right col-md-6 col-lg-6 col-sm-6 col-xs-12" style="margin: 20px 0;">
                             <li class="drop"><a href="#" class="non-active"><h4>{!! isset($staticPages['address']['description']) ? $staticPages['address']['description'] : '' !!}</h4></a>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
                 </div>
             </div>

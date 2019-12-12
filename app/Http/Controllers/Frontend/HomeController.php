@@ -13,6 +13,7 @@ use App\Slider;
 use App\StaticPage;
 use App\Models\Step;
 use App\Models\Team;
+use App\Models\Price;
 use App\Models\Service;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
@@ -30,6 +31,7 @@ class HomeController extends Controller
         $sliders  = Slider::getSlider();
         $steps    = Step::getStep();
         $teams    = Team::getTeam();
-        return view('frontend.pages.home', compact('sliders', 'services', 'steps', 'teams'));
+        $prices    = Price::getPrice();
+        return view('frontend.pages.home', compact('sliders', 'services', 'steps', 'teams', 'prices'));
     }
 }

@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Backend;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class HomeController extends BaseController
+class HomeController extends Controller
 {
     use AuthorizesRequests, ValidatesRequests;
 

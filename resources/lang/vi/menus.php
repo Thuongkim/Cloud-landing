@@ -15,6 +15,7 @@ return [
     'step'  => 'Các bước đăng kí',
     'page'  => 'Slider',
     'team'  => 'Ban điều hành',
+    'price'  => 'Bảng giá',
     'static_page'   => 'Trang tĩnh',
     'slider'   => 'Slider',
     'partner'   => 'Đối tác',

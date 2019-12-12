@@ -99,6 +99,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'], 
         Route::get('teams/update-position/{id}/{value}', ['role' => 'backend', 'as' => 'teams.update-position', 'uses' => 'TeamController@updatePosition']);
         Route::get('teams/delete/{id}', array('as' => 'teams.delete', 'uses' => 'TeamController@delete'));
         Route::resource('teams', 'TeamController');
+
+        Route::get('prices/update-position/{id}/{value}', ['role' => 'backend', 'as' => 'prices.update-position', 'uses' => 'PriceController@updatePosition']);
+        Route::get('prices/delete/{id}', array('as' => 'prices.delete', 'uses' => 'PriceController@delete'));
+        Route::resource('prices', 'PriceController');
     });
 });
 

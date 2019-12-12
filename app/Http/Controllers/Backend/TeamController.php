@@ -78,7 +78,7 @@ class TeamController extends Controller
         }
 
         $data['position']   = 1;
-        $team = team::create($data);
+        $team = Team::create($data);
         Team::where('id', "<>", $team->id)->increment('position');
 
         Session::flash('message', trans('system.success'));

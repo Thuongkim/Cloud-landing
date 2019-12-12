@@ -477,6 +477,22 @@
 	.exp {
 		margin-top: 30px;
 	}
+
+	h3 {
+		font-size: 25px;
+	}
+
+	.exp-box-title {
+		font-size: 18px;
+	}
+
+	.top-words {
+    color: #d29103;
+	}
+
+	.top-words:hover {
+	    color: #e55725;
+	}
 }
 
 @media(min-width:1200px){

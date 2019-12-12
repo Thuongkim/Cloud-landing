@@ -56,7 +56,7 @@
             <div class="services-box">
                 <div class="row">
                 	@foreach($services as $service)
-                    <div class="col-md-4">
+                    <div class="col-sm-4">
                         <div class="services-post">
                             <a class="services-cloud-server" href="javascript:void(0)">
                                 <img alt="" src="{{ asset($service['image']) }}">
@@ -75,7 +75,7 @@
                 <h3 class="box-title">Đăng kí sử dụng dễ dàng</h3>
                  <div class="row">
                  	@foreach($steps as $k => $step)
-                    <div class="{!! ($k == 0) ? ('col-md-2 col-md-offset-1') : ('col-md-2') !!}">
+                    <div class="{!! ($k == 0) ? ('col-xs-4 col-sm-2 col-sm-offset-1') : ('col-xs-4 col-sm-2') !!}">
                         <div class="services-post">
                             <div class="services-post-content">
                                 <h4>{!! $step['title'] !!}</h4>
@@ -101,12 +101,77 @@
                     <a href="#"><button class="read-more">Chi tiết</button></a>
                 </div>
             </div>
-
+        </div>
+    </div>
+    <!-- static-box -->
+    <div class="footer-line exp-box">
+        <div class="container">
+            <div class="exp-line-in">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="exp-box-title">BẰNG KINH NGHIỆM VÀ SỰ THẤU HIỂU KHÁCH HÀNG  ĐƯỢC MINH CHỨNG QUA</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fullwidth-box">
+        <div class="container">
+            <div class="services-box">
+                <div class="row">
+                    {!! isset($staticPages['succeed']['description']) ? $staticPages['succeed']['description'] : '' !!}
+                    {{-- <div class="col-sm-3 col-xs-6">
+                        <div class="services-post col-md-offset-3">
+                            <div class="exp-icon col-sm-5">
+                                <i class="fa fa-calendar fa-4x"></i>
+                            </div>
+                            <div class="exp-icon col-sm-7 services-post-content">
+                                <h2> > 6</h2>
+                                <div>Năm phát triển</div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="services-post col-md-offset-3">
+                            <div class="exp-icon col-sm-5">
+                                <i class="fa fa-paper-plane fa-4x"></i>
+                            </div>
+                            <div class="exp-icon col-sm-7 services-post-content">
+                                <h2> > 2000</h2>
+                                <div>VM đã cung cấp</div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="services-post col-md-offset-1">
+                            <div class="exp-icon col-sm-5">
+                                <i class="fa fa-heart-o fa-4x"></i>
+                            </div>
+                            <div class="exp-icon col-sm-7 services-post-content">
+                                <h2>99%</h2>
+                                <div>Hài lòng về dịch vụ</div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="services-post col-md-offset-1">
+                            <div class="exp-icon col-sm-5">
+                                <i class="fa fa-hand-peace-o fa-4x"></i>
+                            </div>
+                            <div class="exp-icon col-sm-7 services-post-content">
+                                <h2>100%</h2>
+                                <div>Hài lòng về thái độ phục vụ</div>
+                            </div>
+                        </div>
+                    </div> --}}
+                </div>
+            </div>
+            <!-- teams-box -->
             <div class="person-box">
                 <h3 class="box-title">Đội ngũ nhân sự</h3>
                 <div class="row">
                 @foreach($teams as $team)
-	                <div class="col-lg-4">
+	                <div class="col-sm-4">
 	                  <img class="img-circle" src="{{ asset('assets/media/images/teams/'. $team['image']) }}" alt="Generic placeholder image" width="200" height="200">
 	                  <h2>{!! $team['name'] !!}</h2>
 	                  <p>{!! $team['duty'] !!}</p>
@@ -114,8 +179,37 @@
 	                </div><!-- /.col-lg-4 -->
                 @endforeach
               	</div><!-- /.row -->
-          </div>
-            <br/>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div style="background-color: #efefef;">
+        <div class="fullwidth-box">
+            <div class="container">
+                <div class="table-box">
+                    <h3 class="box-title">EVG-CLOUD CUNG CẤP CHO BẠN CÁC GÓI SẢN PHẨM</h3>
+                    <div class="row">
+                        @foreach($prices as $price)
+                        <div class="col-md-4 col-lg-4 col-sm-6">
+                            <div class="services-post">
+                                <div class="table-post-content">
+                                    <table width="85%" align="center">
+                                        <tr>
+                                            <td><h1>{{ $price['price'] }}</h1></td>
+                                            <td><button class="table-button">{{ $price['type'] }}</button></td>
+                                        </tr>
+                                        <tr class="border-table"><td colspan="2">{{ $price['cpu'] }}</td></tr>
+                                        <tr class="border-table"><td colspan="2">{{ $price['ram'] }}</td></tr>
+                                        <tr class="border-table"><td colspan="2">{{ $price['ssd'] }}</td></tr>
+                                        <tr><td colspan="2">{{ $price['ip'] }}</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

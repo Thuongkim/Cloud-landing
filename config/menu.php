@@ -59,6 +59,15 @@ return [
         'glyphicon' => 'fa fa-users',
         'hide' => false
     ],
+    [
+        'label' => 'price'
+    ],
+    [
+        'name' => 'price',
+        'route'=> 'admin.prices.index',
+        'glyphicon' => 'fa fa-usd',
+        'hide' => false
+    ],
     // [
     //     'label' => 'project'
     // ],
