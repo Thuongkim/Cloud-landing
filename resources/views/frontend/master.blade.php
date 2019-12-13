@@ -26,6 +26,7 @@
 
 	<!-- STYLESHEETS -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.css') }}" type="text/css" media="screen">
     <!-- REVOLUTION BANNER CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/fullwidth.css') }}" media="screen" />
