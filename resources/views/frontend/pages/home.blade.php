@@ -16,7 +16,7 @@
             	@foreach($sliders as $k => $slider)
                 <li data-transition="3dcurtain-vertical" data-slotamount="10" data-masterspeed="300">
                     <!-- THE MAIN IMAGE IN THE DEMO SLIDE -->
-                    <img alt="" src="{{ asset($slider['image']) }}">
+                    <img  alt="" src="{{ asset($slider['image']) }}">
 
                     <!-- THE CAPTIONS IN THIS SLDIE -->
                     <div class="caption randomrotate" data-x="700" data-y="122" data-speed="600" data-start="1200" data-easing="easeOutExpo">
@@ -31,15 +31,15 @@
                     <div class="caption lfr medium_text" data-x="10" data-y="170" data-speed="600" data-start="1900" data-easing="easeOutExpo">
                         <!-- <a href="http://vicloud.vn" target="blank_" style="background: #0076f9; color: white;">Chi tiết</a> -->
                         <div class="summary-content">
-                        {!! $slider['summary'] !!}<span id="dots"></span>
+                        {!! $slider['summary'] !!}<span id="dots_{{ $k}}"  style="display: none"></span>
                         </div>
                         <br>
-                        <div class="summary-content" id="more">
+                        <div class="summary-content" id="more_{{ $k}}">
                         {!! $slider['content']!!}
                         <br>
                         </div>
                         <a>
-                            <button type="button" class="detail" onclick="myFunction()" ontouchstart="myFunction()"  id="myBtn">Chi tiết</button>
+                            <button type="button" class="detail" onclick="myFunction({{ $k}})" ontouchstart="myFunction({{ $k}})"  id="myBtn_{{ $k}}">Chi tiết</button>
                         </a>
                         {{-- <div class="summary-content">
                         {!! $slider['summary'] !!}
@@ -249,20 +249,37 @@
 
 @section('js')
     <script type="text/javascript">
-        function myFunction() {
-          var dots = document.getElementById("dots");
-          var moreText = document.getElementById("more");
-          var btnText = document.getElementById("myBtn");
+        var slider = <?php echo count($sliders)?>;
+            function myFunction(k) {
+              var dotss = "dots_"+k;
+              var moreTexts = "more_"+k;
+              var btnTexts = "myBtn_"+k;
+              var dots = document.getElementById(dotss);
+              var moreText = document.getElementById(moreTexts);
+              var btnText = document.getElementById(btnTexts);
+              var banner = document.getElementsByClassName("fullwidthbanner");
 
-          if (dots.style.display === "none") {
-            dots.style.display = "inline";
-            btnText.innerHTML = "Chi tiết";
-            moreText.style.display = "none";
-          } else {
-            dots.style.display = "none";
-            btnText.innerHTML = "Ẩn bớt";
-            moreText.style.display = "inline";
-          }
+              if (dots.style.display === "none") {
+                dots.style.display = "inline";
+                btnText.innerHTML = "Chi tiết";
+                moreText.style.display = "none";
+                if(screen.width <= 581){
+                    for (var i = 0; i < banner.length; i++)
+                        banner[i].style.height = "180px";
+                }
+              } else {
+                dots.style.display = "none";
+                btnText.innerHTML = "Ẩn bớt";
+                moreText.style.display = "inline";
+                if(screen.width <= 581){
+                    for (var i = 0; i < banner.length; i++)
+                        banner[i].style.height = "280px";
+                }
+              }
+            }
+
+        for (var k = 0; k < slider; k++) {
+            myFunction(k);
         }
     </script>
 @endsection
