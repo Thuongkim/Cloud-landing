@@ -129,7 +129,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="{{ route('home') }}"><img alt="" src="{{ asset('assets/frontend/images/logo3.png') }}" width="232" height="66"></a>
+                        <a class="navbar-brand" href="{{ route('home') }}"><img alt="" src="https://img1.wsimg.com/isteam/ip/71a5d690-b33d-45c9-9f18-00e240147337/logo/97b1a937-fdec-4b10-b08d-bfc07c0db65c.png/:/rs=h:150/qt=q:95" height="75"></a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right col-md-4 col-lg-4 col-sm-6">

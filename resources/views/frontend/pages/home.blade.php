@@ -220,7 +220,7 @@
             <div class="container">
                 <div class="table-box">
                     <a class="table-text" href="tel:{!! isset($staticPages['phone']['description']) ? $staticPages['phone']['description'] : '' !!}"><h2 class="contact-content"><b>{!! isset($staticPages['zalo']['description']) ? $staticPages['zalo']['description'] : '' !!}</b></h2></a>
-                     <a class="table-text" href="{{ route('home') }}"><h2 class="contact-content"><b>{!! isset($staticPages['domain']['description']) ? $staticPages['domain']['description'] : '' !!}</b></h2></a>
+                     <a class="table-text" href="https://client.evgcorp.net"><h2 class="contact-content"><b>{!! isset($staticPages['domain']['description']) ? $staticPages['domain']['description'] : '' !!}</b></h2></a>
                     <div class="col-md-2 col-md-offset-5 contact-content">
                         <img alt="" src="/assets/media/images/rocket.png"/>
                         <div class="col-md-12 contact-content">
