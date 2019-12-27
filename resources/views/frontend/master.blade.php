@@ -91,6 +91,30 @@
 </head>
 
 <body>
+    <!-- Load Facebook SDK for JavaScript -->
+      <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            xfbml            : true,
+            version          : 'v5.0'
+          });
+        };
+
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+      <!-- Your customer chat code -->
+      <div class="fb-customerchat" attribution=setup_tool page_id="108302267348945"
+          theme_color="#ff7e29"
+          logged_in_greeting="Xin chào ! EvgCloud hân hạnh được tư vấn và phục vụ quý khách"
+          logged_out_greeting="Xin chào ! EvgCloud hân hạnh được tư vấn và phục vụ quý khách">
+      </div>
 	<!-- Container -->
     <div id="container">
         <!-- Header
@@ -139,11 +163,11 @@
                             </div>
                             <div class="col-md-4">
                                 <ul class="social-icons">
-                                    <li>
+                                    {{-- <li>
                                         <a class="facebook" href="{{ route('home') }}" style="color: white;">
                                             <i class="fa fa-globe"></i>{!! isset($staticPages['domain']['description']) ? $staticPages['domain']['description'] : '' !!}
                                         </a>
-                                    </li>
+                                    </li> --}}
                                     <li>
                                         <a class="facebook" href="tel:{!! isset($staticPages['phone']['description']) ? $staticPages['phone']['description'] : '' !!}" style="color: white;">
                                             <i class="fa fa-phone"></i>{!! isset($staticPages['zalo']['description']) ? $staticPages['zalo']['description'] : '' !!}
@@ -166,6 +190,7 @@
 	<!-- Footer END-->
 	<!-- JAVASCRIPT FILES ========================================= -->
 	<script type="text/javascript" src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="{{ asset('assets/frontend/js/jquery.migrate.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/frontend/js/jquery.magnific-popup.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/frontend/js/bootstrap.js') }}"></script>
@@ -273,6 +298,40 @@
         function check_domain() {
             window.open("http://domain.bctech.vn/customer/cart/result/" + jQuery("#txtDomain").val(), '_blank');
         }
+    </script>
+    <script>
+        var a = 0;
+        $(window).scroll(function() {
+
+          var oTop = $('#counter').offset().top - window.innerHeight;
+          if (a == 0 && $(window).scrollTop() > oTop) {
+            $('.counter').each(function() {
+              var $this = $(this),
+                countTo = $this.attr('data-count');
+              $({
+                countNum: $this.text()
+              }).animate({
+                  countNum: countTo
+                },
+
+                {
+
+                  duration: 2000,
+                  easing: 'swing',
+                  step: function() {
+                    $this.text(Math.floor(this.countNum));
+                  },
+                  complete: function() {
+                    $this.text(this.countNum);
+                    //alert('finished');
+                  }
+
+                });
+            });
+            a = 1;
+          }
+
+        });
     </script>
 </body>
 

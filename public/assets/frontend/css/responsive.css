@@ -77,9 +77,9 @@
 		max-width: 170px;
 	}
 
-	.navbar-brand img {
+	/*.navbar-brand img {
 		width: 100%;
-	}
+	}*/
 
 	.fixed-link-top {
 		display: none;
@@ -188,6 +188,11 @@
 
 	.exp {
 		font-size: 18px;
+	}
+
+	.table-box img {
+	    width: 8%;
+	    height: auto;
 	}
 }
 
@@ -423,6 +428,19 @@
 	.exp {
 		margin-top: 30px;
 	}
+
+	.top-words {
+    color: #d29103;
+	}
+
+	.top-words:hover {
+	    color: #e55725;
+	}
+
+	.table-box img {
+	    width: 15%;
+	    height: auto;
+	}
 }
 
 @media (max-width: 581px) {
@@ -492,6 +510,11 @@
 
 	.top-words:hover {
 	    color: #e55725;
+	}
+
+	.table-box img {
+	    width: 15%;
+	    height: auto;
 	}
 }
 

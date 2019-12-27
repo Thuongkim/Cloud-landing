@@ -366,9 +366,9 @@ website:   	http://www.themepunch.com
 		text-shadow: none;
 	}
 
-.tp-caption a {
+/*.tp-caption a {
 	color: #cfcfcf; font-weight: 400; font-size: 14px; background: rgba(0,0,0,0.8); padding: 8px 20px; text-shadow: none; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -o-border-radius: 4px; -webkit-transition: all 0.2s ease-out; -moz-transition: all 0.2s ease-out; -o-transition: all 0.2s ease-out; -ms-transition: all 0.2s ease-out;
-}
+}*/
 
 .tp-caption a:hover {
 	opacity: 0.7;
@@ -438,7 +438,7 @@ website:   	http://www.themepunch.com
 
 
 	@media only screen and (min-width: 768px) and (max-width: 959px) {
-		.tp-caption a {padding: 8px 15px;}
+		/*.tp-caption a {padding: 8px 15px;*/}
 	 }
 
 
@@ -446,7 +446,7 @@ website:   	http://www.themepunch.com
 	@media only screen and (min-width: 480px) and (max-width: 767px) {
 		.button	{	padding:4px 8px 3px; line-height:25px !important; font-size:11px !important;font-weight:normal;	}
 		a.button { -webkit-transition: none; -moz-transition: none; -o-transition: none; -ms-transition: none;	 }
-		.tp-caption a {padding: 5px 14px;}
+		/*.tp-caption a {padding: 5px 14px;}*/
 
 	}
 
@@ -454,7 +454,7 @@ website:   	http://www.themepunch.com
 		.button	{	padding:2px 5px 2px; line-height:20px !important; font-size:10px !important;}
 		a.button { -webkit-transition: none; -moz-transition: none; -o-transition: none; -ms-transition: none;
 			 }
-			.tp-caption a {padding: 0px 10px;}
+			/*.tp-caption a {padding: 0px 10px;}*/
 	}
 
 

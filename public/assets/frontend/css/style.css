@@ -3349,7 +3349,7 @@ ul.social-icons li a:hover {
 .table-box {
     position: relative;
     padding: 40px 0 0;
-    border-bottom: 1px solid #e8e8e8;
+    /*border-bottom: 1px solid #e8e8e8;*/
     text-align: left;
 }
 
@@ -3385,4 +3385,50 @@ ul.social-icons li a:hover {
 
 .exp-icon {
     padding: 0;
+}
+.contact-content {
+    text-align: center;
+    /*line-height: 20px;*/
+}
+
+.contact-button {
+    color: #fdfdfd;
+    font-family: 'Roboto', sans-serif;
+    padding: 2% 0%;
+    background: black;
+    text-transform: uppercase;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    border-radius: 10px;
+    margin-bottom: -25px;
+    /*float: right;*/
+}
+
+.contact-small-button {
+    color: #fdfdfd;
+    font-family: 'Roboto', sans-serif;
+    padding: 2% 5%;
+    background: black;
+    text-transform: uppercase;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    /*float: right;*/
+}
+
+.table-box img {
+    width: 35%;
+    height: auto;
+}
+.table-text {
+    color: black;
+    text-decoration: none;
 }

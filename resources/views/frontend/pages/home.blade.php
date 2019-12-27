@@ -37,7 +37,9 @@
                         <div id="demo_{{ $k}}" class="collapse" style="width: 100%;">
                         {!! $slider['content']!!}
                         </div>
-                        <button type="button" class="detail" data-toggle="collapse" data-target="#demo_{{ $k}}">Chi tiết</button>
+                        <a>
+                            <button type="button" class="detail" data-toggle="collapse" data-target="#demo_{{ $k}}">Chi tiết</button>
+                        </a>
                     </div>
                 </li>
                 @endforeach
@@ -118,7 +120,7 @@
     <div class="fullwidth-box">
         <div class="container">
             <div class="services-box">
-                <div class="row">
+                <div class="row" id="counter">
                     {!! isset($staticPages['succeed']['description']) ? $staticPages['succeed']['description'] : '' !!}
                     {{-- <div class="col-sm-3 col-xs-6">
                         <div class="services-post col-md-offset-3">
@@ -207,6 +209,23 @@
                             </div>
                         </div>
                         @endforeach
+                    </div>
+                    <div class="col-md-8 col-md-offset-2 contact-content"><h2 class="contact-button">LIÊN HỆ NGAY ĐỂ TRẢI NGHIỆM DỊCH VỤ</h2></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="background-color: white;">
+        <div class="fullwidth-box">
+            <div class="container">
+                <div class="table-box">
+                    <a class="table-text" href="tel:{!! isset($staticPages['phone']['description']) ? $staticPages['phone']['description'] : '' !!}"><h2 class="contact-content"><b>{!! isset($staticPages['zalo']['description']) ? $staticPages['zalo']['description'] : '' !!}</b></h2></a>
+                     <a class="table-text" href="{{ route('home') }}"><h2 class="contact-content"><b>{!! isset($staticPages['domain']['description']) ? $staticPages['domain']['description'] : '' !!}</b></h2></a>
+                    <div class="col-md-2 col-md-offset-5 contact-content">
+                        <img alt="" src="/assets/media/images/rocket.png"/>
+                        <div class="col-md-12 contact-content">
+                            <button class="contact-small-button">liên hệ ngay</button>
+                        </div>
                     </div>
                 </div>
             </div>
