@@ -30,16 +30,27 @@
                     </div> -->
                     <div class="caption lfr medium_text" data-x="10" data-y="170" data-speed="600" data-start="1900" data-easing="easeOutExpo">
                         <!-- <a href="http://vicloud.vn" target="blank_" style="background: #0076f9; color: white;">Chi tiết</a> -->
-                        <div>
+                        <div class="summary-content">
+                        {!! $slider['summary'] !!}<span id="dots"></span>
+                        </div>
+                        <br>
+                        <div class="summary-content" id="more">
+                        {!! $slider['content']!!}
+                        <br>
+                        </div>
+                        <a>
+                            <button type="button" class="detail" onclick="myFunction()" ontouchstart="myFunction()"  id="myBtn">Chi tiết</button>
+                        </a>
+                        {{-- <div class="summary-content">
                         {!! $slider['summary'] !!}
                         </div>
                         <br>
-                        <div id="demo_{{ $k}}" class="collapse" style="width: 100%;">
+                        <div class="summary-content" id="demo_{{ $k}}" class="collapse" style="width: 100%;">
                         {!! $slider['content']!!}
                         </div>
                         <a>
                             <button type="button" class="detail" data-toggle="collapse" data-target="#demo_{{ $k}}">Chi tiết</button>
-                        </a>
+                        </a> --}}
                     </div>
                 </li>
                 @endforeach
@@ -234,4 +245,24 @@
 </div>
 <!-- End content -->
 
+@endsection
+
+@section('js')
+    <script type="text/javascript">
+        function myFunction() {
+          var dots = document.getElementById("dots");
+          var moreText = document.getElementById("more");
+          var btnText = document.getElementById("myBtn");
+
+          if (dots.style.display === "none") {
+            dots.style.display = "inline";
+            btnText.innerHTML = "Chi tiết";
+            moreText.style.display = "none";
+          } else {
+            dots.style.display = "none";
+            btnText.innerHTML = "Ẩn bớt";
+            moreText.style.display = "inline";
+          }
+        }
+    </script>
 @endsection

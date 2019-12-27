@@ -110,10 +110,10 @@
       }(document, 'script', 'facebook-jssdk'));</script>
 
       <!-- Your customer chat code -->
-      <div class="fb-customerchat" attribution=setup_tool page_id="108302267348945"
-          theme_color="#ff7e29"
-          logged_in_greeting="Xin chào ! EvgCloud hân hạnh được tư vấn và phục vụ quý khách"
-          logged_out_greeting="Xin chào ! EvgCloud hân hạnh được tư vấn và phục vụ quý khách">
+      <div class="fb-customerchat" attribution=setup_tool page_id="107560980758424"
+      theme_color="#ff7e29"
+      logged_in_greeting="Xin chào! EvgCloud hân hạnh được tư vấn và phục vụ quý khách"
+      logged_out_greeting="Xin chào! EvgCloud hân hạnh được tư vấn và phục vụ quý khách">
       </div>
 	<!-- Container -->
     <div id="container">
@@ -333,6 +333,8 @@
 
         });
     </script>
+    @yield('js')
+    
 </body>
 
 </html>
