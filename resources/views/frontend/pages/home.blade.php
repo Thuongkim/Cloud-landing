@@ -19,7 +19,7 @@
                     <img  alt="" src="{{ asset($slider['image']) }}">
 
                     <!-- THE CAPTIONS IN THIS SLDIE -->
-                    <div class="caption randomrotate" data-x="700" data-y="122" data-speed="600" data-start="1200" data-easing="easeOutExpo">
+                    <div class="caption randomrotate" data-x="740" data-y="122" data-speed="600" data-start="1200" data-easing="easeOutExpo">
                         <img src="{{ asset($slider['sub_image']) }}" />
                     </div>
                     <div class="caption big_white sft stt slide3-style" data-x="10" data-y="100" data-speed="500" data-start="1500" data-easing="easeOutExpo">
